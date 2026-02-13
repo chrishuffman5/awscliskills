@@ -2,7 +2,7 @@
 
 ### 9.1 `tag-resource`
 
-Adds tags to an Organizations resource (account, root, OU, or policy).
+Adds one or more tags to an Organizations resource (account, root, OU, or policy).
 
 **Synopsis:**
 ```bash
@@ -18,7 +18,7 @@ aws organizations tag-resource \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--resource-id` | **Yes** | string | -- | ID of the resource to tag (account ID, root ID, OU ID, or policy ID) |
-| `--tags` | **Yes** | list | -- | Tags to apply. Shorthand: `Key=string,Value=string ...` |
+| `--tags` | **Yes** | list | -- | Tags to add. Shorthand: `Key=string,Value=string ...` |
 
 **Output Schema:**
 ```json
@@ -29,7 +29,7 @@ aws organizations tag-resource \
 
 ### 9.2 `untag-resource`
 
-Removes tags from an Organizations resource.
+Removes one or more tags from an Organizations resource.
 
 **Synopsis:**
 ```bash
@@ -56,7 +56,7 @@ aws organizations untag-resource \
 
 ### 9.3 `list-tags-for-resource`
 
-Lists tags for an Organizations resource. **Paginated operation.**
+Lists all tags attached to the specified resource. **Paginated operation.**
 
 **Synopsis:**
 ```bash

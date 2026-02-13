@@ -2,7 +2,7 @@
 
 ### 7.1 `enable-aws-service-access`
 
-Enables integration of an AWS service with AWS Organizations.
+Enables integration of an AWS service with AWS Organizations. This allows the service to perform operations in your organization member accounts.
 
 **Synopsis:**
 ```bash
@@ -16,7 +16,7 @@ aws organizations enable-aws-service-access \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--service-principal` | **Yes** | string | -- | Service principal to enable (e.g., `config.amazonaws.com`, `cloudtrail.amazonaws.com`, `sso.amazonaws.com`) |
+| `--service-principal` | **Yes** | string | -- | Service principal to enable (e.g., `config.amazonaws.com`, `cloudtrail.amazonaws.com`, `guardduty.amazonaws.com`, `sso.amazonaws.com`) |
 
 **Output Schema:**
 ```json
@@ -52,7 +52,7 @@ aws organizations disable-aws-service-access \
 
 ### 7.3 `list-aws-service-access-for-organization`
 
-Lists the AWS services that have been enabled for integration with the organization. **Paginated operation.**
+Returns a list of the AWS services enabled for integration with your organization. **Paginated operation.**
 
 **Synopsis:**
 ```bash

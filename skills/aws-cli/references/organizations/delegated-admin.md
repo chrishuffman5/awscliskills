@@ -2,7 +2,7 @@
 
 ### 6.1 `register-delegated-administrator`
 
-Registers a member account as a delegated administrator for an AWS service.
+Enables a member account to be a delegated administrator for an AWS service that supports Organizations integration.
 
 **Synopsis:**
 ```bash
@@ -17,7 +17,7 @@ aws organizations register-delegated-administrator \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--account-id` | **Yes** | string | -- | 12-digit account ID to register |
+| `--account-id` | **Yes** | string | -- | 12-digit account ID of the member account |
 | `--service-principal` | **Yes** | string | -- | Service principal (e.g., `config.amazonaws.com`, `guardduty.amazonaws.com`) |
 
 **Output Schema:**
@@ -29,7 +29,7 @@ aws organizations register-delegated-administrator \
 
 ### 6.2 `deregister-delegated-administrator`
 
-Removes a member account as a delegated administrator for an AWS service.
+Removes the specified member account as a delegated administrator for the specified AWS service.
 
 **Synopsis:**
 ```bash
@@ -44,8 +44,8 @@ aws organizations deregister-delegated-administrator \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--account-id` | **Yes** | string | -- | 12-digit account ID to deregister |
-| `--service-principal` | **Yes** | string | -- | Service principal to deregister for |
+| `--account-id` | **Yes** | string | -- | 12-digit account ID |
+| `--service-principal` | **Yes** | string | -- | Service principal to deregister |
 
 **Output Schema:**
 ```json
@@ -56,7 +56,7 @@ aws organizations deregister-delegated-administrator \
 
 ### 6.3 `list-delegated-administrators`
 
-Lists the accounts designated as delegated administrators. **Paginated operation.**
+Lists the AWS accounts designated as delegated administrators. **Paginated operation.**
 
 **Synopsis:**
 ```bash
@@ -101,7 +101,7 @@ aws organizations list-delegated-administrators \
 
 ### 6.4 `list-delegated-services-for-account`
 
-Lists the AWS services for which a member account is a delegated administrator. **Paginated operation.**
+Lists the AWS services for which the specified account is a delegated administrator. **Paginated operation.**
 
 **Synopsis:**
 ```bash

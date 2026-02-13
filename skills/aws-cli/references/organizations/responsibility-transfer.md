@@ -2,7 +2,7 @@
 
 ### 8.1 `put-resource-policy`
 
-Creates or updates the resource-based delegation policy for the organization.
+Creates or updates a resource-based delegation policy that can be used to delegate policy management for Organizations to specified member accounts.
 
 **Synopsis:**
 ```bash
@@ -17,8 +17,8 @@ aws organizations put-resource-policy \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--content` | **Yes** | string | -- | JSON policy document (string or `file://` path) |
-| `--tags` | No | list | None | Tags for the resource policy |
+| `--content` | **Yes** | string | -- | Policy content (JSON string or `file://` path) |
+| `--tags` | No | list | None | Tags to apply. Shorthand: `Key=string,Value=string ...` |
 
 **Output Schema:**
 ```json
@@ -37,7 +37,7 @@ aws organizations put-resource-policy \
 
 ### 8.2 `delete-resource-policy`
 
-Deletes the resource-based delegation policy from the organization.
+Deletes the resource policy from the organization.
 
 **Synopsis:**
 ```bash
@@ -61,7 +61,7 @@ aws organizations delete-resource-policy \
 
 ### 8.3 `describe-resource-policy`
 
-Retrieves the resource-based delegation policy for the organization.
+Retrieves the resource policy for the organization.
 
 **Synopsis:**
 ```bash
