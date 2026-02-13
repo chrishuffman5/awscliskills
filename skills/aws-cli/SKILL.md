@@ -11,7 +11,7 @@ description: >-
   Billing, Marketplace Catalog, License Manager, AWS Health,
   Payment Cryptography, Location Services, Resource Explorer, GameLift,
   Well-Architected, Resilience Hub, Resource Groups Tagging API, Config,
-  and Organizations.
+  Organizations, and Compute Optimizer.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -75,6 +75,7 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Resource Groups Tagging API | [`resourcegroupstaggingapi/overview.md`](references/resourcegroupstaggingapi/overview.md) | Cross-service tag management, resource discovery by tag, tag compliance reporting |
 | Config | [`configservice/overview.md`](references/configservice/overview.md) | Config rules, conformance packs, recorders, delivery channels, remediation, aggregators, resource evaluation |
 | Organizations | [`organizations/overview.md`](references/organizations/overview.md) | Organization management, accounts, OUs, policies (SCPs, tag, backup, AI opt-out), handshakes, delegated admin |
+| Compute Optimizer | [`compute-optimizer/overview.md`](references/compute-optimizer/overview.md) | Resource optimization recommendations for EC2, EBS, Lambda, ASG, ECS, RDS, idle resources |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
