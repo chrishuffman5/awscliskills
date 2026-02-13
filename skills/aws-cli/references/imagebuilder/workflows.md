@@ -2,7 +2,7 @@
 
 ### 10.1 `create-workflow`
 
-Creates a new workflow resource.
+Creates a new workflow for EC2 Image Builder. Workflows define the steps that run during image build and test phases.
 
 **Synopsis:**
 ```bash
@@ -27,13 +27,13 @@ aws imagebuilder create-workflow \
 |-----------|----------|------|---------|-------------|
 | `--name` | **Yes** | string | -- | Name of the workflow |
 | `--semantic-version` | **Yes** | string | -- | Semantic version (e.g., `1.0.0`) |
-| `--type` | **Yes** | string | -- | Workflow type: `BUILD`, `TEST`, or `DISTRIBUTION` |
-| `--description` | No | string | -- | Description |
-| `--change-description` | No | string | -- | Description of changes |
-| `--data` | No | string | -- | Inline workflow YAML document |
-| `--uri` | No | string | -- | S3 URI of the workflow document |
-| `--kms-key-id` | No | string | -- | KMS key for encryption |
-| `--tags` | No | map | None | Tags |
+| `--type` | **Yes** | string | -- | Workflow type: `BUILD`, `TEST`, `DISTRIBUTION` |
+| `--description` | No | string | None | Description of the workflow |
+| `--change-description` | No | string | None | Description of changes in this version |
+| `--data` | No | string | None | Inline YAML workflow document |
+| `--uri` | No | string | None | S3 URI of the workflow document |
+| `--kms-key-id` | No | string | None | KMS key ID for encryption |
+| `--tags` | No | map | None | Tags. Shorthand: `KeyName1=string,KeyName2=string` |
 | `--client-token` | No | string | auto-generated | Idempotency token |
 
 **Output Schema:**
@@ -46,7 +46,34 @@ aws imagebuilder create-workflow \
 
 ---
 
-### 10.2 `get-workflow`
+### 10.2 `delete-workflow`
+
+Deletes a workflow resource.
+
+**Synopsis:**
+```bash
+aws imagebuilder delete-workflow \
+    --workflow-build-version-arn <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--workflow-build-version-arn` | **Yes** | string | -- | ARN of the workflow build version to delete |
+
+**Output Schema:**
+```json
+{
+    "workflowBuildVersionArn": "string"
+}
+```
+
+---
+
+### 10.3 `get-workflow`
 
 Gets a workflow resource.
 
@@ -75,14 +102,16 @@ aws imagebuilder get-workflow \
         "changeDescription": "string",
         "type": "BUILD|TEST|DISTRIBUTION",
         "state": {
-            "status": "ACTIVE|DEPRECATED",
+            "status": "ACTIVE",
             "reason": "string"
         },
         "owner": "string",
         "data": "string",
         "kmsKeyId": "string",
         "dateCreated": "string",
-        "tags": {},
+        "tags": {
+            "string": "string"
+        },
         "parameters": [
             {
                 "name": "string",
@@ -97,9 +126,9 @@ aws imagebuilder get-workflow \
 
 ---
 
-### 10.3 `list-workflows`
+### 10.4 `list-workflows`
 
-Lists workflow resources. **Paginated operation.**
+Lists workflow build versions. **Paginated operation.**
 
 **Synopsis:**
 ```bash
@@ -118,12 +147,16 @@ aws imagebuilder list-workflows \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--owner` | No | string | `Self` | Owner filter: `Self`, `Shared`, `Amazon`, `ThirdParty` |
-| `--filters` | No | list | None | Filters. Names: `name`, `type` |
-| `--by-name` | No | boolean | false | Return only the latest version |
-| `--starting-token` | No | string | None | Pagination token |
+| `--owner` | No | string | None | Owner filter: `Self`, `Shared`, `Amazon`, `ThirdParty` |
+| `--filters` | No | list | None | Filters. Shorthand: `name=string,values=string,string ...` |
+| `--by-name` | No | boolean | false | List by name instead of ARN |
+| `--starting-token` | No | string | None | Pagination token from previous response |
 | `--page-size` | No | integer | None | Items per API call |
 | `--max-items` | No | integer | None | Total items to return |
+
+**Filter Names:**
+- `name` -- Workflow name
+- `version` -- Workflow version
 
 **Output Schema:**
 ```json
@@ -145,9 +178,61 @@ aws imagebuilder list-workflows \
 
 ---
 
-### 10.4 `get-workflow-execution`
+### 10.5 `list-workflow-build-versions`
 
-Gets a workflow execution.
+Lists workflow build versions for a given workflow. **Paginated operation.**
+
+**Synopsis:**
+```bash
+aws imagebuilder list-workflow-build-versions \
+    --workflow-version-arn <value> \
+    [--starting-token <value>] \
+    [--page-size <value>] \
+    [--max-items <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--workflow-version-arn` | **Yes** | string | -- | ARN of the workflow version (with `x.x.x` wildcard) |
+| `--starting-token` | No | string | None | Pagination token from previous response |
+| `--page-size` | No | integer | None | Items per API call |
+| `--max-items` | No | integer | None | Total items to return |
+
+**Output Schema:**
+```json
+{
+    "workflowSummaryList": [
+        {
+            "arn": "string",
+            "name": "string",
+            "version": "string",
+            "description": "string",
+            "changeDescription": "string",
+            "type": "BUILD|TEST|DISTRIBUTION",
+            "owner": "string",
+            "state": {
+                "status": "ACTIVE",
+                "reason": "string"
+            },
+            "dateCreated": "string",
+            "tags": {
+                "string": "string"
+            }
+        }
+    ],
+    "nextToken": "string"
+}
+```
+
+---
+
+### 10.6 `get-workflow-execution`
+
+Gets details for a workflow execution.
 
 **Synopsis:**
 ```bash
@@ -185,9 +270,9 @@ aws imagebuilder get-workflow-execution \
 
 ---
 
-### 10.5 `list-workflow-executions`
+### 10.7 `list-workflow-executions`
 
-Lists workflow executions for an image. **Paginated operation.**
+Lists workflow executions for a given image build version. **Paginated operation.**
 
 **Synopsis:**
 ```bash
@@ -205,7 +290,7 @@ aws imagebuilder list-workflow-executions \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--image-build-version-arn` | **Yes** | string | -- | ARN of the image build version |
-| `--starting-token` | No | string | None | Pagination token |
+| `--starting-token` | No | string | None | Pagination token from previous response |
 | `--page-size` | No | integer | None | Items per API call |
 | `--max-items` | No | integer | None | Total items to return |
 
@@ -237,9 +322,9 @@ aws imagebuilder list-workflow-executions \
 
 ---
 
-### 10.6 `get-workflow-step-execution`
+### 10.8 `get-workflow-step-execution`
 
-Gets a workflow step execution.
+Gets details for a workflow step execution.
 
 **Synopsis:**
 ```bash
@@ -253,7 +338,7 @@ aws imagebuilder get-workflow-step-execution \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--step-execution-id` | **Yes** | string | -- | ID of the step execution |
+| `--step-execution-id` | **Yes** | string | -- | ID of the workflow step execution |
 
 **Output Schema:**
 ```json
@@ -280,9 +365,9 @@ aws imagebuilder get-workflow-step-execution \
 
 ---
 
-### 10.7 `list-workflow-step-executions`
+### 10.9 `list-workflow-step-executions`
 
-Lists workflow step executions. **Paginated operation.**
+Lists workflow step executions for a given workflow execution. **Paginated operation.**
 
 **Synopsis:**
 ```bash
@@ -300,7 +385,7 @@ aws imagebuilder list-workflow-step-executions \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--workflow-execution-id` | **Yes** | string | -- | ID of the workflow execution |
-| `--starting-token` | No | string | None | Pagination token |
+| `--starting-token` | No | string | None | Pagination token from previous response |
 | `--page-size` | No | integer | None | Items per API call |
 | `--max-items` | No | integer | None | Total items to return |
 
@@ -333,14 +418,13 @@ aws imagebuilder list-workflow-step-executions \
 
 ---
 
-### 10.8 `list-workflow-build-versions`
+### 10.10 `list-waiting-workflow-steps`
 
-Lists workflow build versions. **Paginated operation.**
+Lists workflow steps that are waiting for action. **Paginated operation.**
 
 **Synopsis:**
 ```bash
-aws imagebuilder list-workflow-build-versions \
-    --workflow-version-arn <value> \
+aws imagebuilder list-waiting-workflow-steps \
     [--starting-token <value>] \
     [--page-size <value>] \
     [--max-items <value>] \
@@ -352,29 +436,21 @@ aws imagebuilder list-workflow-build-versions \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--workflow-version-arn` | **Yes** | string | -- | ARN of the workflow version |
-| `--starting-token` | No | string | None | Pagination token |
+| `--starting-token` | No | string | None | Pagination token from previous response |
 | `--page-size` | No | integer | None | Items per API call |
 | `--max-items` | No | integer | None | Total items to return |
 
 **Output Schema:**
 ```json
 {
-    "workflowSummaryList": [
+    "steps": [
         {
-            "arn": "string",
+            "stepExecutionId": "string",
+            "imageBuildVersionArn": "string",
+            "workflowExecutionId": "string",
+            "workflowBuildVersionArn": "string",
             "name": "string",
-            "version": "string",
-            "description": "string",
-            "changeDescription": "string",
-            "type": "BUILD|TEST|DISTRIBUTION",
-            "owner": "string",
-            "state": {
-                "status": "ACTIVE|DEPRECATED",
-                "reason": "string"
-            },
-            "dateCreated": "string",
-            "tags": {}
+            "action": "string"
         }
     ],
     "nextToken": "string"
@@ -383,14 +459,18 @@ aws imagebuilder list-workflow-build-versions \
 
 ---
 
-### 10.9 `delete-workflow`
+### 10.11 `send-workflow-step-action`
 
-Deletes a workflow resource.
+Sends an action for a workflow step that is waiting for action.
 
 **Synopsis:**
 ```bash
-aws imagebuilder delete-workflow \
-    --workflow-build-version-arn <value> \
+aws imagebuilder send-workflow-step-action \
+    --step-execution-id <value> \
+    --image-build-version-arn <value> \
+    --action <value> \
+    [--reason <value>] \
+    [--client-token <value>] \
     [--cli-input-json | --cli-input-yaml] \
     [--generate-cli-skeleton <value>]
 ```
@@ -399,11 +479,17 @@ aws imagebuilder delete-workflow \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--workflow-build-version-arn` | **Yes** | string | -- | ARN of the workflow build version to delete |
+| `--step-execution-id` | **Yes** | string | -- | ID of the workflow step execution |
+| `--image-build-version-arn` | **Yes** | string | -- | ARN of the image build version |
+| `--action` | **Yes** | string | -- | Action to take: `RESUME`, `STOP` |
+| `--reason` | No | string | None | Reason for the action |
+| `--client-token` | No | string | auto-generated | Idempotency token |
 
 **Output Schema:**
 ```json
 {
-    "workflowBuildVersionArn": "string"
+    "stepExecutionId": "string",
+    "imageBuildVersionArn": "string",
+    "clientToken": "string"
 }
 ```

@@ -2,7 +2,7 @@
 
 ### 11.1 `tag-resource`
 
-Adds tags to the specified Image Builder resource.
+Adds tags to the specified resource.
 
 **Synopsis:**
 ```bash
@@ -18,7 +18,7 @@ aws imagebuilder tag-resource \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--resource-arn` | **Yes** | string | -- | ARN of the resource to tag |
-| `--tags` | **Yes** | map | -- | Tags as key-value pairs. Shorthand: `KeyName1=string,KeyName2=string` |
+| `--tags` | **Yes** | map | -- | Tags to add. Shorthand: `KeyName1=string,KeyName2=string` |
 
 **Output Schema:**
 ```json
@@ -29,7 +29,7 @@ aws imagebuilder tag-resource \
 
 ### 11.2 `untag-resource`
 
-Removes tags from the specified Image Builder resource.
+Removes tags from the specified resource.
 
 **Synopsis:**
 ```bash
@@ -56,7 +56,7 @@ aws imagebuilder untag-resource \
 
 ### 11.3 `list-tags-for-resource`
 
-Lists tags for the specified Image Builder resource.
+Lists the tags for the specified resource.
 
 **Synopsis:**
 ```bash
