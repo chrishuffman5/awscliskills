@@ -1,6 +1,6 @@
 # AWS CLI Skills for Claude Code
 
-A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 31 AWS services, sourced from official AWS documentation.
+A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 101 AWS services, sourced from official AWS documentation.
 
 ## Covered Services
 
@@ -37,6 +37,76 @@ A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). 
 | CodeBuild | `references/codebuild/` | Projects, builds, build batches, report groups, source credentials, webhooks, fleets |
 | CodeDeploy | `references/codedeploy/` | Applications, deployment groups, deployments, deployment configs, revisions |
 | CodePipeline | `references/codepipeline/` | Pipelines, stages, actions, action types, webhooks |
+| CloudFormation | `references/cloudformation/` | Stacks, change sets, stack sets, drift detection, resource scanning, type registry |
+| Auto Scaling | `references/autoscaling/` | Auto Scaling groups, launch configs, scaling policies, lifecycle hooks, instance refresh |
+| EKS | `references/eks/` | Clusters, node groups, Fargate profiles, add-ons, access management, Pod Identity |
+| Elastic Beanstalk | `references/elasticbeanstalk/` | Applications, environments, versions, configuration templates, platforms |
+| Lightsail | `references/lightsail/` | Instances, disks, load balancers, databases, containers, distributions, domains |
+| Batch | `references/batch/` | Jobs, job definitions, job queues, compute environments, scheduling policies |
+| App Runner | `references/apprunner/` | Services, connections, auto scaling, observability, VPC connectors, custom domains |
+| Proton | `references/proton/` | Environments, services, templates, components, repositories, sync configs |
+| Outposts | `references/outposts/` | Outpost management, sites, orders, capacity tasks, assets, catalog items |
+| EC2 Image Builder | `references/imagebuilder/` | Image pipelines, recipes, components, images, infrastructure configs, lifecycle |
+| Service Quotas | `references/service-quotas/` | Quota lookups, increase requests, templates, auto-management, utilization |
+| Resource Groups | `references/resource-groups/` | Resource groups, queries, configurations, tag-based grouping, tag sync |
+| Resource Groups Tagging API | `references/resourcegroupstaggingapi/` | Cross-service tag management, resource discovery by tag, compliance reporting |
+| Config | `references/configservice/` | Config rules, conformance packs, recorders, delivery channels, remediation, aggregators |
+| Organizations | `references/organizations/` | Organization management, accounts, OUs, policies (SCPs, tag, backup, AI opt-out) |
+| Compute Optimizer | `references/compute-optimizer/` | Resource optimization recommendations for EC2, EBS, Lambda, ASG, ECS, RDS |
+| ELB Classic | `references/elb/` | Classic Load Balancers, listeners, health checks, stickiness policies, tags |
+| Service Catalog | `references/servicecatalog/` | Portfolios, products, provisioned products, constraints, service actions |
+| Elastic Disaster Recovery | `references/drs/` | Source servers, recovery instances, replication, launch config, failback |
+| Systems Manager Incidents | `references/ssm-incidents/` | Response plans, incidents, timeline events, contacts, engagements, rotations |
+| Cost Explorer | `references/ce/` | Cost and usage, forecasts, anomalies, savings plans, reservations, rightsizing |
+| Budgets | `references/budgets/` | Budgets, budget actions, notifications, subscribers |
+| Cost and Usage Report | `references/cur/` | Report definitions, S3 delivery |
+| Pricing | `references/pricing/` | Services, products, attribute values, price lists |
+| Savings Plans | `references/savingsplans/` | Savings plans, rates, offerings |
+| Billing | `references/billing/` | Billing views, source views, resource policies |
+| Marketplace Catalog | `references/marketplace-catalog/` | Entities, change sets, resource policies |
+| License Manager | `references/license-manager/` | Licenses, grants, configurations, Linux subscriptions, user subscriptions |
+| AWS Health | `references/health/` | Events, affected entities, organization events |
+| Payment Cryptography | `references/payment-cryptography/` | Keys, encryption, PIN/MAC operations, card validation |
+| Location Services | `references/location/` | Maps, places, routes, geofences, trackers, API keys |
+| Resource Explorer | `references/resource-explorer-2/` | Indexes, views, search, supported resource types |
+| GameLift | `references/gamelift/` | Fleets, builds, game sessions, matchmaking, server groups |
+| Well-Architected | `references/wellarchitected/` | Workloads, lenses, reviews, milestones, profiles |
+| Resilience Hub | `references/resiliencehub/` | Apps, resiliency policies, assessments, recommendations |
+| WorkSpaces | `references/workspaces/` | Virtual desktops, bundles, images, directories, pools, web portals |
+| AppStream 2.0 | `references/appstream/` | Fleets, stacks, images, image builders, app blocks, applications |
+| CodeCommit | `references/codecommit/` | Repositories, branches, commits, files, pull requests, approval rules, merges |
+| CodeArtifact | `references/codeartifact/` | Domains, repositories, packages, package versions, package groups |
+| CodeStar Connections | `references/codestar/` | Source provider connections, hosts, repository links, sync configs |
+| Cloud9 | `references/cloud9/` | Cloud IDE environments, memberships, environment status |
+| X-Ray | `references/xray/` | Traces, service graphs, sampling rules, groups, insights, indexing |
+| CodeGuru | `references/codeguru/` | Code reviews, repository associations, recommendations, security scans |
+| FIS | `references/fis/` | Experiment templates, experiments, actions, target resources, safety levers |
+| Amplify | `references/amplify/` | Apps, branches, domain associations, jobs, deployments, webhooks |
+| Device Farm | `references/devicefarm/` | Projects, device pools, runs, uploads, remote access, test grid |
+| CloudWatch Synthetics | `references/synthetics/` | Canaries, canary runs, groups, runtime versions |
+| Application Insights | `references/application-insights/` | Applications, components, log patterns, problems, workloads |
+| Managed Grafana | `references/grafana/` | Workspaces, authentication, permissions, service accounts, API keys |
+| Managed Prometheus | `references/amp/` | Workspaces, alert manager, rule groups, scrapers, logging |
+| Redshift | `references/redshift/` | Provisioned clusters, snapshots, parameter groups, data sharing, Data API, Serverless |
+| EMR | `references/emr/` | Clusters, instance fleets/groups, steps, scaling, studios, EMR on EKS, Serverless |
+| Athena | `references/athena/` | Query execution, workgroups, named queries, data catalogs, notebooks, sessions |
+| Glue | `references/glue/` | ETL jobs, crawlers, databases, tables, connections, workflows, schema registry |
+| Kinesis | `references/kinesis/` | Data streams, shards, records, consumers, Kinesis Data Analytics |
+| Firehose | `references/firehose/` | Delivery streams, data ingestion, destination management, encryption |
+| OpenSearch | `references/opensearch/` | Domains, packages, VPC endpoints, indexes, Serverless collections/security |
+| Neptune | `references/neptune/` | DB clusters, instances, snapshots, global clusters, Analytics graphs, import/export |
+| Timestream | `references/timestream/` | Databases, tables, write records, queries, scheduled queries |
+| QuickSight | `references/quicksight/` | Dashboards, analyses, templates, data sets, data sources, users, topics, embedding |
+| Lake Formation | `references/lakeformation/` | Permissions, LF-tags, data cell filters, resource registration, transactions |
+| MWAA | `references/mwaa/` | Managed Apache Airflow environments, CLI tokens, web login, REST API |
+| MSK | `references/msk/` | Kafka clusters, configurations, topics, brokers, replicators, MSK Connect |
+| Data Exchange | `references/dataexchange/` | Data sets, revisions, assets, jobs, data grants, event actions |
+| Clean Rooms | `references/cleanrooms/` | Collaborations, memberships, configured tables, protected queries, ML models |
+| Keyspaces | `references/keyspaces/` | Keyspaces, tables, user-defined types, auto scaling, point-in-time recovery |
+| QLDB | `references/qldb/` | Ledgers, journal exports, journal streams, blocks, revisions (end of support) |
+| DocumentDB | `references/docdb/` | Clusters, instances, snapshots, parameter groups, global clusters, Elastic Clusters |
+| Data Pipeline | `references/datapipeline/` | Pipelines, definitions, objects, task management (legacy service) |
+| FinSpace | `references/finspace/` | Kdb environments, databases, clusters, dataviews, changesets, scaling groups |
 
 ## Adding the Skill to Your Project
 
@@ -47,7 +117,7 @@ Claude Code loads skills from a `skills/` directory in your project root. Copy t
 cp -r /path/to/awscliskills/skills/aws-cli skills/
 ```
 
-That's it — one directory gives you all 31 services.
+That's it — one directory gives you all 101 services.
 
 ### Alternative: Git subtree (stays synced with updates)
 
@@ -77,7 +147,7 @@ skills/aws-cli/
       ...
     ec2/
     ecr/
-    ... (31 service directories)
+    ... (101 service directories)
 ```
 
 **SKILL.md** contains:
