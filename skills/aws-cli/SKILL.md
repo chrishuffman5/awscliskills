@@ -15,7 +15,10 @@ description: >-
   EC2 Image Builder, Service Quotas, Resource Groups,
   Resource Groups Tagging API, Config, Organizations, Compute Optimizer,
   ELB Classic, Service Catalog, Elastic Disaster Recovery,
-  and Systems Manager Incidents.
+  Systems Manager Incidents, WorkSpaces, AppStream 2.0, CodeCommit,
+  CodeArtifact, CodeStar Connections, Cloud9, X-Ray, CodeGuru, FIS,
+  Amplify, Device Farm, CloudWatch Synthetics, Application Insights,
+  Managed Grafana, and Managed Prometheus.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -96,6 +99,21 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Service Catalog | [`servicecatalog/overview.md`](references/servicecatalog/overview.md) | Portfolios, products, provisioned products, constraints, service actions, tag options |
 | Elastic Disaster Recovery | [`drs/overview.md`](references/drs/overview.md) | Source servers, recovery instances, replication, launch config, failback, source networks |
 | Systems Manager Incidents | [`ssm-incidents/overview.md`](references/ssm-incidents/overview.md) | Response plans, incidents, timeline events, contacts, engagements, rotations |
+| WorkSpaces | [`workspaces/overview.md`](references/workspaces/overview.md) | Virtual desktops, bundles, images, directories, pools, web portals, browser/network/user settings |
+| AppStream 2.0 | [`appstream/overview.md`](references/appstream/overview.md) | Fleets, stacks, images, image builders, app blocks, applications, entitlements, users |
+| CodeCommit | [`codecommit/overview.md`](references/codecommit/overview.md) | Repositories, branches, commits, files, pull requests, approval rules, merges, comments |
+| CodeArtifact | [`codeartifact/overview.md`](references/codeartifact/overview.md) | Domains, repositories, packages, package versions, package groups, authorization |
+| CodeStar Connections | [`codestar/overview.md`](references/codestar/overview.md) | Source provider connections, hosts, repository links, sync configs, notification rules |
+| Cloud9 | [`cloud9/overview.md`](references/cloud9/overview.md) | Cloud IDE environments, memberships, environment status |
+| X-Ray | [`xray/overview.md`](references/xray/overview.md) | Traces, service graphs, sampling rules, groups, insights, indexing, encryption |
+| CodeGuru | [`codeguru/overview.md`](references/codeguru/overview.md) | Code reviews, repository associations, recommendations, security scans, findings |
+| FIS | [`fis/overview.md`](references/fis/overview.md) | Experiment templates, experiments, actions, target resources, safety levers |
+| Amplify | [`amplify/overview.md`](references/amplify/overview.md) | Apps, branches, domain associations, jobs, deployments, webhooks |
+| Device Farm | [`devicefarm/overview.md`](references/devicefarm/overview.md) | Projects, device pools, runs, uploads, remote access, test grid, offerings |
+| CloudWatch Synthetics | [`synthetics/overview.md`](references/synthetics/overview.md) | Canaries, canary runs, groups, runtime versions |
+| Application Insights | [`application-insights/overview.md`](references/application-insights/overview.md) | Applications, components, log patterns, problems, workloads |
+| Managed Grafana | [`grafana/overview.md`](references/grafana/overview.md) | Workspaces, authentication, permissions, service accounts, API keys |
+| Managed Prometheus | [`amp/overview.md`](references/amp/overview.md) | Workspaces, alert manager, rule groups, scrapers, logging, resource policies |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
