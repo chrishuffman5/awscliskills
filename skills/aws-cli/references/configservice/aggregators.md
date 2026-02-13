@@ -571,3 +571,169 @@ aws configservice select-aggregate-resource-config \
     "NextToken": "string"
 }
 ```
+
+---
+
+### 6.13 `put-aggregation-authorization`
+
+Authorizes the aggregator account and region to collect data from a source account and region.
+
+**Synopsis:**
+```bash
+aws configservice put-aggregation-authorization \
+    --authorized-account-id <value> \
+    --authorized-aws-region <value> \
+    [--tags <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--authorized-account-id` | **Yes** | string | -- | 12-digit account ID of the aggregator account |
+| `--authorized-aws-region` | **Yes** | string | -- | Region of the aggregator account |
+| `--tags` | No | list | None | Tags to apply |
+
+**Output Schema:**
+```json
+{
+    "AggregationAuthorization": {
+        "AggregationAuthorizationArn": "string",
+        "AuthorizedAccountId": "string",
+        "AuthorizedAwsRegion": "string",
+        "CreationTime": "timestamp"
+    }
+}
+```
+
+---
+
+### 6.14 `delete-aggregation-authorization`
+
+Deletes the authorization for the specified aggregator account and region.
+
+**Synopsis:**
+```bash
+aws configservice delete-aggregation-authorization \
+    --authorized-account-id <value> \
+    --authorized-aws-region <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--authorized-account-id` | **Yes** | string | -- | 12-digit account ID |
+| `--authorized-aws-region` | **Yes** | string | -- | Region of the aggregator account |
+
+**Output Schema:**
+```json
+{}
+```
+
+---
+
+### 6.15 `describe-aggregation-authorizations`
+
+Returns a list of authorizations granted to various aggregator accounts and regions. **Paginated operation.**
+
+**Synopsis:**
+```bash
+aws configservice describe-aggregation-authorizations \
+    [--starting-token <value>] \
+    [--page-size <value>] \
+    [--max-items <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--starting-token` | No | string | None | Pagination token |
+| `--page-size` | No | integer | None | Items per API call |
+| `--max-items` | No | integer | None | Total items to return |
+
+**Output Schema:**
+```json
+{
+    "AggregationAuthorizations": [
+        {
+            "AggregationAuthorizationArn": "string",
+            "AuthorizedAccountId": "string",
+            "AuthorizedAwsRegion": "string",
+            "CreationTime": "timestamp"
+        }
+    ],
+    "NextToken": "string"
+}
+```
+
+---
+
+### 6.16 `describe-pending-aggregation-requests`
+
+Returns a list of all pending aggregation requests from source accounts. **Paginated operation.**
+
+**Synopsis:**
+```bash
+aws configservice describe-pending-aggregation-requests \
+    [--starting-token <value>] \
+    [--page-size <value>] \
+    [--max-items <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--starting-token` | No | string | None | Pagination token |
+| `--page-size` | No | integer | None | Items per API call |
+| `--max-items` | No | integer | None | Total items to return |
+
+**Output Schema:**
+```json
+{
+    "PendingAggregationRequests": [
+        {
+            "RequesterAccountId": "string",
+            "RequesterAwsRegion": "string"
+        }
+    ],
+    "NextToken": "string"
+}
+```
+
+---
+
+### 6.17 `delete-pending-aggregation-request`
+
+Deletes a pending aggregation request for an account and region.
+
+**Synopsis:**
+```bash
+aws configservice delete-pending-aggregation-request \
+    --requester-account-id <value> \
+    --requester-aws-region <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--requester-account-id` | **Yes** | string | -- | 12-digit account ID of the requester |
+| `--requester-aws-region` | **Yes** | string | -- | Region of the requester |
+
+**Output Schema:**
+```json
+{}
+```

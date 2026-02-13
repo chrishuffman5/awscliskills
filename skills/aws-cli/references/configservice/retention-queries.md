@@ -2,7 +2,7 @@
 
 ### 10.1 `put-retention-configuration`
 
-Creates or updates the retention period for AWS Config configuration history and configuration snapshots.
+Creates or updates the retention period for Config history and configuration items. The default retention period is 7 years.
 
 **Synopsis:**
 ```bash
@@ -16,7 +16,7 @@ aws configservice put-retention-configuration \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--retention-period-in-days` | **Yes** | integer | -- | Number of days to retain (30-2557, i.e. ~7 years) |
+| `--retention-period-in-days` | **Yes** | integer | -- | Number of days to retain configuration items (30-2557) |
 
 **Output Schema:**
 ```json
@@ -32,7 +32,7 @@ aws configservice put-retention-configuration \
 
 ### 10.2 `delete-retention-configuration`
 
-Deletes the retention configuration.
+Deletes the retention configuration, reverting to the default retention period.
 
 **Synopsis:**
 ```bash
@@ -46,7 +46,7 @@ aws configservice delete-retention-configuration \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--retention-configuration-name` | **Yes** | string | -- | Name of the retention configuration (e.g., `default`) |
+| `--retention-configuration-name` | **Yes** | string | -- | Name of the retention configuration (default: `default`) |
 
 **Output Schema:**
 ```json
@@ -57,7 +57,7 @@ aws configservice delete-retention-configuration \
 
 ### 10.3 `describe-retention-configurations`
 
-Returns the details of the retention configuration. **Paginated operation.**
+Returns the details of one or more retention configurations. **Paginated operation.**
 
 **Synopsis:**
 ```bash
@@ -73,7 +73,7 @@ aws configservice describe-retention-configurations \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--retention-configuration-names` | No | list(string) | None | Specific retention config names |
+| `--retention-configuration-names` | No | list(string) | None | Specific retention configuration names |
 | `--starting-token` | No | string | None | Pagination token |
 | `--max-items` | No | integer | None | Total items to return |
 
@@ -94,7 +94,7 @@ aws configservice describe-retention-configurations \
 
 ### 10.4 `put-stored-query`
 
-Creates or updates a stored query for use with `select-resource-config` or `select-aggregate-resource-config`.
+Creates or updates a stored SQL query for AWS Config advanced queries.
 
 **Synopsis:**
 ```bash
@@ -134,7 +134,7 @@ aws configservice put-stored-query \
 
 ### 10.5 `delete-stored-query`
 
-Deletes a stored query.
+Deletes the stored query for a single AWS account and a single region.
 
 **Synopsis:**
 ```bash
@@ -159,7 +159,7 @@ aws configservice delete-stored-query \
 
 ### 10.6 `get-stored-query`
 
-Returns the details of a stored query.
+Returns the details of a specific stored query.
 
 **Synopsis:**
 ```bash
@@ -192,7 +192,7 @@ aws configservice get-stored-query \
 
 ### 10.7 `list-stored-queries`
 
-Lists all stored queries. **Paginated operation.**
+Lists all stored queries in an AWS account in a single region. **Paginated operation.**
 
 **Synopsis:**
 ```bash

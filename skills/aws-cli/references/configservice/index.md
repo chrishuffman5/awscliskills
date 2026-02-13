@@ -17,6 +17,10 @@
 | `get-compliance-details-by-resource` | Config Rules | Get compliance details for a resource |
 | `get-compliance-summary-by-config-rule` | Config Rules | Get compliance summary across rules |
 | `get-compliance-summary-by-resource-type` | Config Rules | Get compliance summary by resource type |
+| `describe-config-rule-evaluation-status` | Config Rules | Get evaluation status for Config rules |
+| `start-config-rules-evaluation` | Config Rules | Start on-demand evaluation for Config rules |
+| `delete-evaluation-results` | Config Rules | Delete evaluation results for a Config rule |
+| `get-custom-rule-policy` | Config Rules | Get Guard policy for a custom policy rule |
 | `put-conformance-pack` | Conformance Packs | Create or update a conformance pack |
 | `delete-conformance-pack` | Conformance Packs | Delete a conformance pack |
 | `describe-conformance-packs` | Conformance Packs | Describe conformance packs |
@@ -24,6 +28,7 @@
 | `get-conformance-pack-compliance-summary` | Conformance Packs | Get compliance summary for conformance packs |
 | `describe-conformance-pack-compliance` | Conformance Packs | Get rule-level compliance in a pack |
 | `get-conformance-pack-compliance-details` | Conformance Packs | Get resource-level compliance details in a pack |
+| `list-conformance-pack-compliance-scores` | Conformance Packs | List compliance scores for conformance packs |
 | `put-configuration-recorder` | Recorders | Create or update a configuration recorder |
 | `delete-configuration-recorder` | Recorders | Delete a configuration recorder |
 | `describe-configuration-recorders` | Recorders | Describe configuration recorders |
@@ -34,6 +39,7 @@
 | `delete-delivery-channel` | Delivery Channels | Delete a delivery channel |
 | `describe-delivery-channels` | Delivery Channels | Describe delivery channels |
 | `describe-delivery-channel-status` | Delivery Channels | Get delivery channel status |
+| `deliver-config-snapshot` | Delivery Channels | Deliver a configuration snapshot to S3 |
 | `put-remediation-configurations` | Remediation | Create or update remediation configurations |
 | `delete-remediation-configuration` | Remediation | Delete a remediation configuration |
 | `describe-remediation-configurations` | Remediation | Describe remediation configurations |
@@ -54,6 +60,11 @@
 | `list-aggregate-discovered-resources` | Aggregators | List resources in an aggregator |
 | `batch-get-aggregate-resource-config` | Aggregators | Batch get aggregate resource configs |
 | `select-aggregate-resource-config` | Aggregators | Run SQL query on aggregate resources |
+| `put-aggregation-authorization` | Aggregators | Authorize aggregator account to collect data |
+| `delete-aggregation-authorization` | Aggregators | Delete aggregation authorization |
+| `describe-aggregation-authorizations` | Aggregators | List aggregation authorizations |
+| `describe-pending-aggregation-requests` | Aggregators | List pending aggregation requests |
+| `delete-pending-aggregation-request` | Aggregators | Delete a pending aggregation request |
 | `list-discovered-resources` | Resources | List discovered resources |
 | `get-discovered-resource-counts` | Resources | Get discovered resource counts |
 | `get-resource-config-history` | Resources | Get configuration history for a resource |
@@ -63,6 +74,7 @@
 | `start-resource-evaluation` | Resource Evaluation | Start evaluating a resource |
 | `get-resource-evaluation-summary` | Resource Evaluation | Get resource evaluation summary |
 | `list-resource-evaluations` | Resource Evaluation | List resource evaluations |
+| `put-external-evaluation` | Resource Evaluation | Publish external evaluation results |
 | `put-organization-config-rule` | Organization Config | Create organization Config rule |
 | `delete-organization-config-rule` | Organization Config | Delete organization Config rule |
 | `describe-organization-config-rules` | Organization Config | Describe organization Config rules |
@@ -73,6 +85,7 @@
 | `describe-organization-conformance-packs` | Organization Config | Describe organization conformance packs |
 | `describe-organization-conformance-pack-statuses` | Organization Config | Get organization conformance pack statuses |
 | `get-organization-conformance-pack-detailed-status` | Organization Config | Get detailed member account status |
+| `get-organization-custom-rule-policy` | Organization Config | Get Guard policy for org custom rule |
 | `put-retention-configuration` | Retention & Queries | Set retention period for config history |
 | `delete-retention-configuration` | Retention & Queries | Delete retention configuration |
 | `describe-retention-configurations` | Retention & Queries | Describe retention configurations |

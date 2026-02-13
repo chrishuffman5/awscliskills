@@ -152,3 +152,30 @@ aws configservice describe-delivery-channel-status \
     ]
 }
 ```
+
+---
+
+### 4.5 `deliver-config-snapshot`
+
+Schedules delivery of a configuration snapshot to the S3 bucket in the delivery channel.
+
+**Synopsis:**
+```bash
+aws configservice deliver-config-snapshot \
+    --delivery-channel-name <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--delivery-channel-name` | **Yes** | string | -- | Name of the delivery channel |
+
+**Output Schema:**
+```json
+{
+    "configSnapshotId": "string"
+}
+```

@@ -2,7 +2,7 @@
 
 ### 11.1 `tag-resource`
 
-Adds tags to an AWS Config resource (Config rules, configuration aggregators, conformance packs).
+Associates the specified tags to a Config resource (Config rule, configuration aggregator, or conformance pack).
 
 **Synopsis:**
 ```bash
@@ -17,8 +17,8 @@ aws configservice tag-resource \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--resource-arn` | **Yes** | string | -- | ARN of the Config resource to tag |
-| `--tags` | **Yes** | list | -- | Tags to apply. Shorthand: `Key=string,Value=string ...` |
+| `--resource-arn` | **Yes** | string | -- | ARN of the Config resource |
+| `--tags` | **Yes** | list | -- | Tags to add. Shorthand: `Key=string,Value=string ...` |
 
 **Output Schema:**
 ```json
@@ -29,7 +29,7 @@ aws configservice tag-resource \
 
 ### 11.2 `untag-resource`
 
-Removes tags from an AWS Config resource.
+Removes tags from a Config resource.
 
 **Synopsis:**
 ```bash
@@ -44,7 +44,7 @@ aws configservice untag-resource \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--resource-arn` | **Yes** | string | -- | ARN of the Config resource to untag |
+| `--resource-arn` | **Yes** | string | -- | ARN of the Config resource |
 | `--tag-keys` | **Yes** | list(string) | -- | Tag keys to remove |
 
 **Output Schema:**
@@ -56,7 +56,7 @@ aws configservice untag-resource \
 
 ### 11.3 `list-tags-for-resource`
 
-Lists tags for an AWS Config resource. **Paginated operation.**
+Lists the tags for a Config resource. **Paginated operation.**
 
 **Synopsis:**
 ```bash

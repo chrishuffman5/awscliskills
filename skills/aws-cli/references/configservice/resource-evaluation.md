@@ -174,3 +174,41 @@ aws configservice list-resource-evaluations \
     "NextToken": "string"
 }
 ```
+
+---
+
+### 8.5 `put-external-evaluation`
+
+Publishes evaluation results from an external process. Used by third-party integrations to report compliance data to Config.
+
+**Synopsis:**
+```bash
+aws configservice put-external-evaluation \
+    --config-rule-name <value> \
+    --external-evaluation <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--config-rule-name` | **Yes** | string | -- | Name of the Config rule |
+| `--external-evaluation` | **Yes** | structure | -- | External evaluation result |
+
+**External Evaluation Structure:**
+```json
+{
+    "ComplianceResourceType": "string",
+    "ComplianceResourceId": "string",
+    "ComplianceType": "COMPLIANT|NON_COMPLIANT|NOT_APPLICABLE|INSUFFICIENT_DATA",
+    "Annotation": "string",
+    "OrderingTimestamp": "timestamp"
+}
+```
+
+**Output Schema:**
+```json
+{}
+```

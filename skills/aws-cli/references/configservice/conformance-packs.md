@@ -296,3 +296,47 @@ aws configservice get-conformance-pack-compliance-details \
     "NextToken": "string"
 }
 ```
+
+---
+
+### 2.8 `list-conformance-pack-compliance-scores`
+
+Returns compliance scores for one or more conformance packs. A compliance score is the percentage of compliant rule-resource combinations. **Paginated operation.**
+
+**Synopsis:**
+```bash
+aws configservice list-conformance-pack-compliance-scores \
+    [--filters <value>] \
+    [--sort-order <value>] \
+    [--sort-by <value>] \
+    [--starting-token <value>] \
+    [--page-size <value>] \
+    [--max-items <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--filters` | No | structure | None | Filter by conformance pack names. Shorthand: `ConformancePackNames=string,string` |
+| `--sort-order` | No | string | `DESCENDING` | Sort order: `ASCENDING` or `DESCENDING` |
+| `--sort-by` | No | string | `SCORE` | Sort by: `SCORE` |
+| `--starting-token` | No | string | None | Pagination token |
+| `--page-size` | No | integer | None | Items per API call |
+| `--max-items` | No | integer | None | Total items to return |
+
+**Output Schema:**
+```json
+{
+    "ConformancePackComplianceScores": [
+        {
+            "Score": "string",
+            "ConformancePackName": "string",
+            "LastUpdatedTime": "timestamp"
+        }
+    ],
+    "NextToken": "string"
+}
+```

@@ -397,3 +397,30 @@ aws configservice get-organization-conformance-pack-detailed-status \
     "NextToken": "string"
 }
 ```
+
+---
+
+### 9.11 `get-organization-custom-rule-policy`
+
+Returns the Guard policy definition for an organization custom policy Config rule.
+
+**Synopsis:**
+```bash
+aws configservice get-organization-custom-rule-policy \
+    --organization-config-rule-name <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--organization-config-rule-name` | **Yes** | string | -- | Name of the organization Config rule |
+
+**Output Schema:**
+```json
+{
+    "PolicyText": "string"
+}
+```

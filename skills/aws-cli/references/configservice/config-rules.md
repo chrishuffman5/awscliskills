@@ -432,3 +432,129 @@ aws configservice get-compliance-summary-by-resource-type \
     ]
 }
 ```
+
+---
+
+### 1.10 `describe-config-rule-evaluation-status`
+
+Returns status information for each Config rule including last evaluation time, last success/failure, and number of resources evaluated. **Paginated operation.**
+
+**Synopsis:**
+```bash
+aws configservice describe-config-rule-evaluation-status \
+    [--config-rule-names <value>] \
+    [--starting-token <value>] \
+    [--page-size <value>] \
+    [--max-items <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--config-rule-names` | No | list(string) | None | Specific rule names |
+| `--starting-token` | No | string | None | Pagination token |
+| `--page-size` | No | integer | None | Items per API call |
+| `--max-items` | No | integer | None | Total items to return |
+
+**Output Schema:**
+```json
+{
+    "ConfigRulesEvaluationStatus": [
+        {
+            "ConfigRuleName": "string",
+            "ConfigRuleArn": "string",
+            "ConfigRuleId": "string",
+            "LastSuccessfulInvocationTime": "timestamp",
+            "LastFailedInvocationTime": "timestamp",
+            "LastSuccessfulEvaluationTime": "timestamp",
+            "LastFailedEvaluationTime": "timestamp",
+            "FirstActivatedTime": "timestamp",
+            "LastDeactivatedTime": "timestamp",
+            "LastErrorCode": "string",
+            "LastErrorMessage": "string",
+            "FirstEvaluationStarted": true|false
+        }
+    ],
+    "NextToken": "string"
+}
+```
+
+---
+
+### 1.11 `start-config-rules-evaluation`
+
+Runs an on-demand evaluation for the specified Config rules against the last known configuration state.
+
+**Synopsis:**
+```bash
+aws configservice start-config-rules-evaluation \
+    --config-rule-names <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--config-rule-names` | **Yes** | list(string) | -- | Config rule names to evaluate (up to 25) |
+
+**Output Schema:**
+```json
+{}
+```
+
+---
+
+### 1.12 `delete-evaluation-results`
+
+Deletes the evaluation results for the specified Config rule. Use this to force a re-evaluation.
+
+**Synopsis:**
+```bash
+aws configservice delete-evaluation-results \
+    --config-rule-name <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--config-rule-name` | **Yes** | string | -- | Name of the Config rule |
+
+**Output Schema:**
+```json
+{}
+```
+
+---
+
+### 1.13 `get-custom-rule-policy`
+
+Returns the policy definition for a custom Config rule that uses Guard policy language.
+
+**Synopsis:**
+```bash
+aws configservice get-custom-rule-policy \
+    [--config-rule-name <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--config-rule-name` | No | string | None | Name of the custom policy Config rule |
+
+**Output Schema:**
+```json
+{
+    "PolicyText": "string"
+}
+```
