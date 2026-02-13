@@ -29,7 +29,7 @@ description: >-
   Transfer Family, DataSync, Snow Family, Storage Gateway, Backup, FSx,
   S3 Control, Network Manager, Migration, Application Discovery, DMS,
   S3 Outposts, Internet Monitor, CloudWatch Network Monitor, Textract,
-  Kendra, Comprehend Medical, and HealthLake.
+  Kendra, Comprehend Medical, HealthLake, and Bedrock.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -187,6 +187,7 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | CloudWatch Network Monitor | [`networkmonitor/overview.md`](references/networkmonitor/overview.md) | Network monitors, probes, network performance monitoring |
 | Textract | [`textract/overview.md`](references/textract/overview.md) | Document text detection, form/table analysis, expense analysis, ID analysis, lending analysis, custom adapters |
 | Kendra | [`kendra/overview.md`](references/kendra/overview.md) | Intelligent search indexes, data sources, FAQs, thesauri, query suggestions, featured results, experiences, intelligent ranking |
+| Bedrock | [`bedrock/overview.md`](references/bedrock/overview.md) | Foundation models, custom models, fine-tuning, guardrails, inference profiles, agents, knowledge bases, prompts, flows, RAG, model invocation |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
