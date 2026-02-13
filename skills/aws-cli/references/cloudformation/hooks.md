@@ -1,6 +1,6 @@
 # Hooks
 
-CloudFormation Hooks are extensions that proactively validate resource configurations before CloudFormation creates, updates, or deletes resources. Hooks use the type registry commands with hook-specific configuration.
+CloudFormation Hooks are extensions that proactively validate resource configurations before CloudFormation creates, updates, or deletes resources.
 
 ## Overview
 
@@ -17,21 +17,27 @@ Hooks intercept CloudFormation operations and can either warn or prevent non-com
 | `FAIL` | Hook failure prevents the operation |
 | `WARN` | Hook failure generates a warning but allows the operation |
 
+### Hook Status Values
+| Status | Description |
+|--------|-------------|
+| `HOOK_IN_PROGRESS` | Hook invocation is in progress |
+| `HOOK_COMPLETE_SUCCEEDED` | Hook completed successfully |
+| `HOOK_COMPLETE_FAILED` | Hook completed with failure |
+| `HOOK_FAILED` | Hook invocation failed |
+
 ---
 
-### 11.1 Activating a Hook
+### 11.1 `list-hook-results`
 
-Use `activate-type` to activate a published hook in your account.
+Returns a list of hook invocation results for a given target (stack operation). **Paginated operation.**
 
 **Synopsis:**
 ```bash
-aws cloudformation activate-type \
-    --type HOOK \
-    --type-name <value> \
-    --publisher-id <value> \
-    [--type-name-alias <value>] \
-    [--auto-update | --no-auto-update] \
-    [--execution-role-arn <value>] \
+aws cloudformation list-hook-results \
+    --target-type <value> \
+    --target-id <value> \
+    [--starting-token <value>] \
+    [--max-items <value>] \
     [--cli-input-json | --cli-input-yaml] \
     [--generate-cli-skeleton <value>]
 ```
@@ -40,79 +46,41 @@ aws cloudformation activate-type \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--type` | **Yes** | string | -- | Must be `HOOK` |
-| `--type-name` | **Yes** | string | -- | Hook type name |
-| `--publisher-id` | **Yes** | string | -- | Publisher ID of the hook |
-| `--type-name-alias` | No | string | None | Alias for the hook |
-| `--auto-update` | No | boolean | false | Auto-update on new versions |
-| `--execution-role-arn` | No | string | None | Execution role ARN |
+| `--target-type` | **Yes** | string | -- | `CHANGE_SET`, `STACK`, `RESOURCE`, or `CLOUD_CONTROL` |
+| `--target-id` | **Yes** | string | -- | Target ID (stack ID, change set ID, etc.) |
+| `--starting-token` | No | string | None | Pagination token |
+| `--max-items` | No | integer | None | Max items to return |
 
 **Output Schema:**
 ```json
 {
-    "Arn": "string"
-}
-```
-
----
-
-### 11.2 Configuring a Hook
-
-Use `set-type-configuration` to configure a hook with its target stacks, failure mode, and properties.
-
-**Synopsis:**
-```bash
-aws cloudformation set-type-configuration \
-    --type HOOK \
-    --type-name <value> \
-    --configuration <value> \
-    [--configuration-alias <value>] \
-    [--cli-input-json | --cli-input-yaml] \
-    [--generate-cli-skeleton <value>]
-```
-
-**Parameters:**
-
-| Parameter | Required | Type | Default | Description |
-|-----------|----------|------|---------|-------------|
-| `--type` | **Yes** | string | -- | Must be `HOOK` |
-| `--type-name` | **Yes** | string | -- | Hook type name |
-| `--configuration` | **Yes** | string | -- | Hook configuration JSON |
-| `--configuration-alias` | No | string | `default` | Configuration alias |
-
-**Hook Configuration Structure:**
-```json
-{
-    "CloudFormationConfiguration": {
-        "HookConfiguration": {
-            "TargetStacks": "ALL|NONE",
+    "TargetType": "CHANGE_SET|STACK|RESOURCE|CLOUD_CONTROL",
+    "TargetId": "string",
+    "HookResults": [
+        {
+            "InvocationPoint": "PRE_PROVISION",
             "FailureMode": "FAIL|WARN",
-            "Properties": {
-                "hookPropertyKey": "hookPropertyValue"
-            }
+            "TypeName": "string",
+            "TypeVersionId": "string",
+            "TypeConfigurationVersionId": "string",
+            "Status": "HOOK_IN_PROGRESS|HOOK_COMPLETE_SUCCEEDED|HOOK_COMPLETE_FAILED|HOOK_FAILED",
+            "HookStatusReason": "string"
         }
-    }
-}
-```
-
-**Output Schema:**
-```json
-{
-    "ConfigurationArn": "string"
+    ],
+    "NextToken": "string"
 }
 ```
 
 ---
 
-### 11.3 Deactivating a Hook
+### 11.2 `get-hook-result`
 
-Use `deactivate-type` to deactivate a hook in your account.
+Returns the details of a specific hook invocation result.
 
 **Synopsis:**
 ```bash
-aws cloudformation deactivate-type \
-    --type HOOK \
-    --type-name <value> \
+aws cloudformation get-hook-result \
+    --hook-result-id <value> \
     [--cli-input-json | --cli-input-yaml] \
     [--generate-cli-skeleton <value>]
 ```
@@ -121,10 +89,22 @@ aws cloudformation deactivate-type \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--type` | **Yes** | string | -- | Must be `HOOK` |
-| `--type-name` | **Yes** | string | -- | Hook type name |
+| `--hook-result-id` | **Yes** | string | -- | Hook result ID |
 
-**Output:** No output on success (empty JSON `{}`).
+**Output Schema:**
+```json
+{
+    "InvocationPoint": "PRE_PROVISION",
+    "FailureMode": "FAIL|WARN",
+    "TypeName": "string",
+    "TypeVersionId": "string",
+    "TypeConfigurationVersionId": "string",
+    "Status": "HOOK_IN_PROGRESS|HOOK_COMPLETE_SUCCEEDED|HOOK_COMPLETE_FAILED|HOOK_FAILED",
+    "HookStatusReason": "string",
+    "TargetType": "CHANGE_SET|STACK|RESOURCE|CLOUD_CONTROL",
+    "TargetId": "string"
+}
+```
 
 ---
 

@@ -2,7 +2,7 @@
 
 ### 6.1 `create-generated-template`
 
-Creates a template from existing resources discovered via resource scanning.
+Creates a generated template (IaC generator) from existing resources identified by a resource scan.
 
 **Synopsis:**
 ```bash
@@ -18,9 +18,9 @@ aws cloudformation create-generated-template \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--generated-template-name` | **Yes** | string | -- | Name of the generated template |
+| `--generated-template-name` | **Yes** | string | -- | Name for the generated template |
 | `--resources` | No | list | None | Resources to include. JSON: `[{"ResourceType":"string","LogicalResourceId":"string","ResourceIdentifier":{"key":"value"}}]` |
-| `--template-configuration` | No | structure | None | Configuration options. Shorthand: `DeletionPolicy=DELETE\|RETAIN,UpdateReplacePolicy=DELETE\|RETAIN` |
+| `--template-configuration` | No | structure | None | Template configuration. Shorthand: `DeletionPolicy=DELETE\|RETAIN\|SNAPSHOT,UpdateReplacePolicy=DELETE\|RETAIN\|SNAPSHOT` |
 
 **Output Schema:**
 ```json
@@ -31,7 +31,44 @@ aws cloudformation create-generated-template \
 
 ---
 
-### 6.2 `delete-generated-template`
+### 6.2 `update-generated-template`
+
+Updates a generated template. Use to add or remove resources, or change the template configuration.
+
+**Synopsis:**
+```bash
+aws cloudformation update-generated-template \
+    --generated-template-name <value> \
+    [--new-generated-template-name <value>] \
+    [--add-resources <value>] \
+    [--remove-resources <value>] \
+    [--refresh-all-resources | --no-refresh-all-resources] \
+    [--template-configuration <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--generated-template-name` | **Yes** | string | -- | Name or ID of the generated template |
+| `--new-generated-template-name` | No | string | None | New name for the template |
+| `--add-resources` | No | list | None | Resources to add |
+| `--remove-resources` | No | list(string) | None | Logical IDs of resources to remove |
+| `--refresh-all-resources` | No | boolean | false | Refresh all resource data from the live environment |
+| `--template-configuration` | No | structure | None | Updated template configuration |
+
+**Output Schema:**
+```json
+{
+    "GeneratedTemplateId": "string"
+}
+```
+
+---
+
+### 6.3 `delete-generated-template`
 
 Deletes a generated template.
 
@@ -47,15 +84,15 @@ aws cloudformation delete-generated-template \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--generated-template-name` | **Yes** | string | -- | Name or ARN of the generated template |
+| `--generated-template-name` | **Yes** | string | -- | Name or ID of the generated template |
 
 **Output:** No output on success.
 
 ---
 
-### 6.3 `describe-generated-template`
+### 6.4 `describe-generated-template`
 
-Describes a generated template, including its status and resource details.
+Describes a generated template, including its status, resources, and configuration.
 
 **Synopsis:**
 ```bash
@@ -69,7 +106,7 @@ aws cloudformation describe-generated-template \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--generated-template-name` | **Yes** | string | -- | Name or ARN of the generated template |
+| `--generated-template-name` | **Yes** | string | -- | Name or ID of the generated template |
 
 **Output Schema:**
 ```json
@@ -78,25 +115,13 @@ aws cloudformation describe-generated-template \
     "GeneratedTemplateName": "string",
     "Resources": [
         {
-            "ResourceType": "string",
             "LogicalResourceId": "string",
+            "ResourceType": "string",
             "ResourceIdentifier": {
                 "key": "value"
             },
             "ResourceStatus": "PENDING|IN_PROGRESS|FAILED|COMPLETE",
-            "ResourceStatusReason": "string",
-            "Warnings": [
-                {
-                    "Type": "MUTUALLY_EXCLUSIVE_PROPERTIES|UNSUPPORTED_PROPERTIES|MUTUALLY_EXCLUSIVE_TYPES",
-                    "Properties": [
-                        {
-                            "PropertyPath": "string",
-                            "Required": true|false,
-                            "Description": "string"
-                        }
-                    ]
-                }
-            ]
+            "ResourceStatusReason": "string"
         }
     ],
     "Status": "CREATE_PENDING|UPDATE_PENDING|DELETE_PENDING|CREATE_IN_PROGRESS|UPDATE_IN_PROGRESS|DELETE_IN_PROGRESS|FAILED|COMPLETE",
@@ -111,8 +136,8 @@ aws cloudformation describe-generated-template \
     },
     "StackId": "string",
     "TemplateConfiguration": {
-        "DeletionPolicy": "DELETE|RETAIN",
-        "UpdateReplacePolicy": "DELETE|RETAIN"
+        "DeletionPolicy": "DELETE|RETAIN|SNAPSHOT",
+        "UpdateReplacePolicy": "DELETE|RETAIN|SNAPSHOT"
     },
     "TotalWarnings": "integer"
 }
@@ -120,9 +145,9 @@ aws cloudformation describe-generated-template \
 
 ---
 
-### 6.4 `get-generated-template`
+### 6.5 `get-generated-template`
 
-Retrieves the generated template body.
+Retrieves the template body for a generated template.
 
 **Synopsis:**
 ```bash
@@ -137,7 +162,7 @@ aws cloudformation get-generated-template \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--generated-template-name` | **Yes** | string | -- | Name or ARN of the generated template |
+| `--generated-template-name` | **Yes** | string | -- | Name or ID of the generated template |
 | `--format` | No | string | `JSON` | Output format: `JSON` or `YAML` |
 
 **Output Schema:**
@@ -150,9 +175,9 @@ aws cloudformation get-generated-template \
 
 ---
 
-### 6.5 `list-generated-templates`
+### 6.6 `list-generated-templates`
 
-Lists generated templates. **Paginated operation.**
+Lists generated templates in the account. **Paginated operation.**
 
 **Synopsis:**
 ```bash
@@ -185,42 +210,5 @@ aws cloudformation list-generated-templates \
         }
     ],
     "NextToken": "string"
-}
-```
-
----
-
-### 6.6 `update-generated-template`
-
-Updates a generated template by adding, removing, or modifying resources.
-
-**Synopsis:**
-```bash
-aws cloudformation update-generated-template \
-    --generated-template-name <value> \
-    [--new-generated-template-name <value>] \
-    [--add-resources <value>] \
-    [--remove-resources <value>] \
-    [--refresh-all-resources | --no-refresh-all-resources] \
-    [--template-configuration <value>] \
-    [--cli-input-json | --cli-input-yaml] \
-    [--generate-cli-skeleton <value>]
-```
-
-**Parameters:**
-
-| Parameter | Required | Type | Default | Description |
-|-----------|----------|------|---------|-------------|
-| `--generated-template-name` | **Yes** | string | -- | Name or ARN of the generated template |
-| `--new-generated-template-name` | No | string | None | New name for the template |
-| `--add-resources` | No | list | None | Resources to add |
-| `--remove-resources` | No | list(string) | None | Logical resource IDs to remove |
-| `--refresh-all-resources` | No | boolean | false | Refresh all resources in the template |
-| `--template-configuration` | No | structure | None | Updated configuration |
-
-**Output Schema:**
-```json
-{
-    "GeneratedTemplateId": "string"
 }
 ```

@@ -2,7 +2,7 @@
 
 ### 7.1 `start-resource-scan`
 
-Starts scanning for existing resources in your account that can be managed by CloudFormation.
+Starts scanning for resources in the account. Used by the IaC generator to discover existing resources that can be added to generated templates.
 
 **Synopsis:**
 ```bash
@@ -29,7 +29,7 @@ aws cloudformation start-resource-scan \
 
 ### 7.2 `describe-resource-scan`
 
-Describes the status of a resource scan.
+Describes a resource scan, including its status and progress.
 
 **Synopsis:**
 ```bash
@@ -64,7 +64,7 @@ aws cloudformation describe-resource-scan \
 
 ### 7.3 `list-resource-scans`
 
-Lists all resource scans. **Paginated operation.**
+Lists resource scans in the account. **Paginated operation.**
 
 **Synopsis:**
 ```bash
@@ -151,7 +151,7 @@ aws cloudformation list-resource-scan-resources \
 
 ### 7.5 `list-resource-scan-related-resources`
 
-Lists resources related to a specific resource discovered in a scan. **Paginated operation.**
+Lists resources related to a given resource discovered by a resource scan. **Paginated operation.**
 
 **Synopsis:**
 ```bash

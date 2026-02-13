@@ -563,3 +563,96 @@ aws cloudformation deactivate-type \
 | `--arn` | No | string | None | Type ARN |
 
 **Output:** No output on success (empty JSON `{}`).
+
+---
+
+### 8.15 `register-publisher`
+
+Registers your account as a publisher of public extensions in the CloudFormation registry.
+
+**Synopsis:**
+```bash
+aws cloudformation register-publisher \
+    [--accept-terms-and-conditions | --no-accept-terms-and-conditions] \
+    [--connection-arn <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--accept-terms-and-conditions` | No | boolean | false | Accept the terms and conditions for publishing |
+| `--connection-arn` | No | string | None | ARN of the CodeStar connection for identity verification |
+
+**Output Schema:**
+```json
+{
+    "PublisherId": "string"
+}
+```
+
+---
+
+### 8.16 `describe-publisher`
+
+Returns information about a CloudFormation extension publisher.
+
+**Synopsis:**
+```bash
+aws cloudformation describe-publisher \
+    [--publisher-id <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--publisher-id` | No | string | None | Publisher ID. Omit to describe the calling account |
+
+**Output Schema:**
+```json
+{
+    "PublisherId": "string",
+    "PublisherStatus": "VERIFIED|UNVERIFIED",
+    "IdentityProvider": "AWS_Marketplace|GitHub|Bitbucket",
+    "PublisherProfile": "string"
+}
+```
+
+---
+
+### 8.17 `record-handler-progress`
+
+Reports progress of a resource handler to CloudFormation. Used by resource type developers to report status from their handler code.
+
+**Synopsis:**
+```bash
+aws cloudformation record-handler-progress \
+    --bearer-token <value> \
+    --operation-status <value> \
+    --current-operation-status <value> \
+    [--error-code <value>] \
+    [--status-message <value>] \
+    [--resource-model <value>] \
+    [--client-request-token <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--bearer-token` | **Yes** | string | -- | Bearer token from the handler request |
+| `--operation-status` | **Yes** | string | -- | `PENDING`, `IN_PROGRESS`, `SUCCESS`, `FAILED` |
+| `--current-operation-status` | **Yes** | string | -- | Current operation status |
+| `--error-code` | No | string | None | Error code: `NotUpdatable`, `InvalidRequest`, `AccessDenied`, `InvalidCredentials`, `AlreadyExists`, `NotFound`, `ResourceConflict`, `Throttling`, `ServiceLimitExceeded`, `NotStabilized`, `GeneralServiceException`, `ServiceInternalError`, `NetworkFailure`, `InternalFailure`, `InvalidTypeConfiguration`, `HandlerInternalFailure`, `NonCompliant`, `Unknown`, `UnsupportedTarget` |
+| `--status-message` | No | string | None | Status message |
+| `--resource-model` | No | string | None | JSON resource model |
+| `--client-request-token` | No | string | None | Client request token |
+
+**Output:** No output on success (empty JSON `{}`).

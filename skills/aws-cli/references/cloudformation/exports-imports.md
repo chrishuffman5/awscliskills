@@ -65,3 +65,38 @@ aws cloudformation list-imports \
     "NextToken": "string"
 }
 ```
+
+---
+
+### 9.3 `describe-account-limits`
+
+Retrieves your account's CloudFormation limits, such as the maximum number of stacks. **Paginated operation.**
+
+**Synopsis:**
+```bash
+aws cloudformation describe-account-limits \
+    [--starting-token <value>] \
+    [--max-items <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--starting-token` | No | string | None | Pagination token |
+| `--max-items` | No | integer | None | Max items to return |
+
+**Output Schema:**
+```json
+{
+    "AccountLimits": [
+        {
+            "Name": "string",
+            "Value": "integer"
+        }
+    ],
+    "NextToken": "string"
+}
+```
