@@ -10,7 +10,7 @@ description: >-
   Cost Explorer, Budgets, Cost and Usage Report, Pricing, Savings Plans,
   Billing, Marketplace Catalog, License Manager, AWS Health,
   Payment Cryptography, Location Services, Resource Explorer, GameLift,
-  Well-Architected, Resilience Hub, and Resource Groups Tagging API.
+  Well-Architected, Resilience Hub, Resource Groups Tagging API, and Config.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -72,6 +72,7 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Well-Architected | [`wellarchitected/overview.md`](references/wellarchitected/overview.md) | Workloads, lenses, reviews, milestones, profiles |
 | Resilience Hub | [`resiliencehub/overview.md`](references/resiliencehub/overview.md) | Apps, resiliency policies, assessments, recommendations |
 | Resource Groups Tagging API | [`resourcegroupstaggingapi/overview.md`](references/resourcegroupstaggingapi/overview.md) | Cross-service tag management, resource discovery by tag, tag compliance reporting |
+| Config | [`configservice/overview.md`](references/configservice/overview.md) | Config rules, conformance packs, recorders, delivery channels, remediation, aggregators, resource evaluation |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
