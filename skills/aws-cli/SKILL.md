@@ -29,7 +29,10 @@ description: >-
   Transfer Family, DataSync, Snow Family, Storage Gateway, Backup, FSx,
   S3 Control, Network Manager, Migration, Application Discovery, DMS,
   S3 Outposts, Internet Monitor, CloudWatch Network Monitor, Textract,
-  Kendra, Comprehend Medical, HealthLake, Forecast, Q Connect, Bedrock, and SageMaker.
+  Kendra, Comprehend Medical, HealthLake, Forecast, Q Connect, Bedrock, SageMaker,
+  Comprehend, Rekognition, Polly, Transcribe, Translate, Lex v2, Personalize,
+  Lookout for Vision, Lookout for Equipment, Lookout for Metrics, SageMaker A2I,
+  and Entity Resolution.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -193,6 +196,18 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Forecast | [`forecast/overview.md`](references/forecast/overview.md) | Time-series forecasting, datasets, AutoPredictors, forecasts, what-if analysis, explainability, monitors, queries |
 | Q Connect | [`qconnect/overview.md`](references/qconnect/overview.md) | AI-powered contact center assistant, knowledge bases, AI agents, guardrails, prompts, sessions, messaging, quick responses, message templates |
 | SageMaker | [`sagemaker/overview.md`](references/sagemaker/overview.md) | Training jobs, models, endpoints, processing, hyperparameter tuning, AutoML, pipelines, experiments, Feature Store, model registry, monitoring, notebooks, HyperPod clusters, Studio domains, MLflow, optimization, labeling, real-time/async inference |
+| Comprehend | [`comprehend/overview.md`](references/comprehend/overview.md) | NLP text analysis, entity detection, sentiment, key phrases, language detection, document classification, entity recognizers, flywheels, endpoints |
+| Rekognition | [`rekognition/overview.md`](references/rekognition/overview.md) | Image/video analysis, face detection, collections, users, liveness, stream processors, media analysis, custom labels projects |
+| Polly | [`polly/overview.md`](references/polly/overview.md) | Text-to-speech synthesis, speech marks, lexicons, voice descriptions |
+| Transcribe | [`transcribe/overview.md`](references/transcribe/overview.md) | Speech-to-text transcription, call analytics, medical transcription, custom vocabularies, language models |
+| Translate | [`translate/overview.md`](references/translate/overview.md) | Language translation, batch translation, custom terminologies, parallel data |
+| Lex v2 | [`lex/overview.md`](references/lex/overview.md) | Conversational AI bots, intents, slots, locales, custom vocabulary, import/export, test sets, analytics, runtime sessions |
+| Personalize | [`personalize/overview.md`](references/personalize/overview.md) | ML recommendations, dataset groups, schemas, solutions, campaigns, recommenders, batch jobs, event trackers, runtime recommendations |
+| Lookout for Vision | [`lookoutvision/overview.md`](references/lookoutvision/overview.md) | Visual anomaly detection, projects, models, datasets, model packaging, anomaly detection |
+| Lookout for Equipment | [`lookoutequipment/overview.md`](references/lookoutequipment/overview.md) | Industrial equipment anomaly detection, datasets, models, inference schedulers, labels, retraining, sensor statistics |
+| Lookout for Metrics | [`lookoutmetrics/overview.md`](references/lookoutmetrics/overview.md) | Metric anomaly detection, detectors, metric sets, alerts, anomaly groups |
+| SageMaker A2I | [`sagemaker-a2i-runtime/overview.md`](references/sagemaker-a2i-runtime/overview.md) | Human-in-the-loop review, human loops, flow definitions |
+| Entity Resolution | [`entityresolution/overview.md`](references/entityresolution/overview.md) | Entity matching workflows, ID mapping, ID namespaces, schema mappings, provider services |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 

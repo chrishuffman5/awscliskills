@@ -1,6 +1,6 @@
 # AWS CLI Skills for Claude Code
 
-A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 141 AWS services, sourced from official AWS documentation.
+A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 161 AWS services, sourced from official AWS documentation.
 
 ## Covered Services
 
@@ -147,6 +147,26 @@ A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). 
 | S3 Outposts | `references/s3outposts/` | Endpoints, shared endpoints, Outposts with S3 capability |
 | Internet Monitor | `references/internetmonitor/` | Monitors, health events, internet events, queries |
 | CloudWatch Network Monitor | `references/networkmonitor/` | Network monitors, probes, performance monitoring |
+| Bedrock | `references/bedrock/` | Foundation models, custom models, guardrails, inference profiles, agents, knowledge bases, prompts, flows, RAG, runtime inference |
+| SageMaker | `references/sagemaker/` | Training jobs, models, endpoints, processing, hyperparameter tuning, AutoML, pipelines, experiments, Feature Store, model registry, monitoring, notebooks, HyperPod clusters |
+| Comprehend | `references/comprehend/` | NLP text analysis, entity detection, sentiment, key phrases, language detection, document classification, entity recognizers, flywheels |
+| Rekognition | `references/rekognition/` | Image/video analysis, face detection, collections, users, liveness, stream processors, media analysis, custom labels projects |
+| Polly | `references/polly/` | Text-to-speech synthesis, speech marks, lexicons, voice descriptions |
+| Transcribe | `references/transcribe/` | Speech-to-text transcription, call analytics, medical transcription, custom vocabularies, language models |
+| Translate | `references/translate/` | Language translation, batch translation, custom terminologies, parallel data |
+| Lex v2 | `references/lex/` | Conversational AI bots, intents, slots, locales, custom vocabulary, import/export, test sets, analytics, runtime sessions |
+| Personalize | `references/personalize/` | ML recommendations, dataset groups, schemas, solutions, campaigns, recommenders, batch jobs, event trackers |
+| Forecast | `references/forecast/` | Time-series forecasting, datasets, AutoPredictors, forecasts, what-if analysis, explainability, monitors, queries |
+| Textract | `references/textract/` | Document text detection, form/table analysis, expense analysis, ID analysis, lending analysis, custom adapters |
+| Kendra | `references/kendra/` | Intelligent search indexes, data sources, FAQs, thesauri, query suggestions, featured results, experiences, ranking |
+| Comprehend Medical | `references/comprehendmedical/` | Medical entity detection, PHI detection, ICD-10-CM/RxNorm/SNOMED CT code inference, batch processing |
+| HealthLake | `references/healthlake/` | FHIR R4 data stores, import/export jobs, SSE encryption, SMART on FHIR authorization |
+| Lookout for Vision | `references/lookoutvision/` | Visual anomaly detection, projects, models, datasets, model packaging |
+| Lookout for Equipment | `references/lookoutequipment/` | Industrial equipment anomaly detection, datasets, models, inference schedulers, labels, retraining |
+| Lookout for Metrics | `references/lookoutmetrics/` | Metric anomaly detection, detectors, metric sets, alerts, anomaly groups |
+| Q Connect | `references/qconnect/` | AI-powered contact center assistant, knowledge bases, AI agents, guardrails, prompts, sessions |
+| SageMaker A2I | `references/sagemaker-a2i-runtime/` | Human-in-the-loop review, human loops, flow definitions |
+| Entity Resolution | `references/entityresolution/` | Entity matching workflows, ID mapping, ID namespaces, schema mappings, provider services |
 
 ## Adding the Skill to Your Project
 
@@ -157,7 +177,7 @@ Claude Code loads skills from a `skills/` directory in your project root. Copy t
 cp -r /path/to/awscliskills/skills/aws-cli skills/
 ```
 
-That's it — one directory gives you all 141 services.
+That's it — one directory gives you all 161 services.
 
 ### Alternative: Git subtree (stays synced with updates)
 
@@ -187,7 +207,7 @@ skills/aws-cli/
       ...
     ec2/
     ecr/
-    ... (141 service directories)
+    ... (161 service directories)
 ```
 
 **SKILL.md** contains:
