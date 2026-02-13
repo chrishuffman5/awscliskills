@@ -189,6 +189,7 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Kendra | [`kendra/overview.md`](references/kendra/overview.md) | Intelligent search indexes, data sources, FAQs, thesauri, query suggestions, featured results, experiences, intelligent ranking |
 | Comprehend Medical | [`comprehendmedical/overview.md`](references/comprehendmedical/overview.md) | Medical entity detection, PHI detection, ICD-10-CM/RxNorm/SNOMED CT code inference, batch processing |
 | Bedrock | [`bedrock/overview.md`](references/bedrock/overview.md) | Foundation models, custom models, fine-tuning, guardrails, inference profiles, agents, knowledge bases, prompts, flows, RAG, model invocation |
+| HealthLake | [`healthlake/overview.md`](references/healthlake/overview.md) | FHIR R4 data stores, FHIR import/export jobs, SSE encryption, SMART on FHIR authorization, waiters |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
