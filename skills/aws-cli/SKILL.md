@@ -10,8 +10,12 @@ description: >-
   Cost Explorer, Budgets, Cost and Usage Report, Pricing, Savings Plans,
   Billing, Marketplace Catalog, License Manager, AWS Health,
   Payment Cryptography, Location Services, Resource Explorer, GameLift,
-  Well-Architected, Resilience Hub, Resource Groups Tagging API, Config,
-  Organizations, and Compute Optimizer.
+  Well-Architected, Resilience Hub, CloudFormation, Auto Scaling, EKS,
+  Elastic Beanstalk, Lightsail, Batch, App Runner, Proton, Outposts,
+  EC2 Image Builder, Service Quotas, Resource Groups,
+  Resource Groups Tagging API, Config, Organizations, Compute Optimizer,
+  ELB Classic, Service Catalog, Elastic Disaster Recovery,
+  and Systems Manager Incidents.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -76,6 +80,22 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Config | [`configservice/overview.md`](references/configservice/overview.md) | Config rules, conformance packs, recorders, delivery channels, remediation, aggregators, resource evaluation |
 | Organizations | [`organizations/overview.md`](references/organizations/overview.md) | Organization management, accounts, OUs, policies (SCPs, tag, backup, AI opt-out), handshakes, delegated admin |
 | Compute Optimizer | [`compute-optimizer/overview.md`](references/compute-optimizer/overview.md) | Resource optimization recommendations for EC2, EBS, Lambda, ASG, ECS, RDS, idle resources |
+| CloudFormation | [`cloudformation/overview.md`](references/cloudformation/overview.md) | Stacks, change sets, stack sets, drift detection, resource scanning, type registry, generated templates |
+| Auto Scaling | [`autoscaling/overview.md`](references/autoscaling/overview.md) | Auto Scaling groups, launch configurations, scaling policies, lifecycle hooks, instance refresh, warm pools |
+| EKS | [`eks/overview.md`](references/eks/overview.md) | Clusters, node groups, Fargate profiles, add-ons, access management, Pod Identity, EKS Anywhere |
+| Elastic Beanstalk | [`elasticbeanstalk/overview.md`](references/elasticbeanstalk/overview.md) | Applications, environments, versions, configuration templates, platforms, managed actions |
+| Lightsail | [`lightsail/overview.md`](references/lightsail/overview.md) | Instances, disks, load balancers, databases, containers, distributions, domains, buckets |
+| Batch | [`batch/overview.md`](references/batch/overview.md) | Jobs, job definitions, job queues, compute environments, scheduling policies |
+| App Runner | [`apprunner/overview.md`](references/apprunner/overview.md) | Services, connections, auto scaling, observability, VPC connectors, custom domains |
+| Proton | [`proton/overview.md`](references/proton/overview.md) | Environments, services, templates, components, repositories, sync configs |
+| Outposts | [`outposts/overview.md`](references/outposts/overview.md) | Outpost management, sites, orders, capacity tasks, assets, catalog items |
+| EC2 Image Builder | [`imagebuilder/overview.md`](references/imagebuilder/overview.md) | Image pipelines, recipes, components, images, infrastructure configs, lifecycle policies, workflows |
+| Service Quotas | [`service-quotas/overview.md`](references/service-quotas/overview.md) | Quota lookups, increase requests, templates, auto-management, utilization reports |
+| Resource Groups | [`resource-groups/overview.md`](references/resource-groups/overview.md) | Resource groups, queries, configurations, tag-based grouping, tag sync tasks |
+| ELB Classic | [`elb/overview.md`](references/elb/overview.md) | Classic Load Balancers, listeners, health checks, stickiness policies, tags |
+| Service Catalog | [`servicecatalog/overview.md`](references/servicecatalog/overview.md) | Portfolios, products, provisioned products, constraints, service actions, tag options |
+| Elastic Disaster Recovery | [`drs/overview.md`](references/drs/overview.md) | Source servers, recovery instances, replication, launch config, failback, source networks |
+| Systems Manager Incidents | [`ssm-incidents/overview.md`](references/ssm-incidents/overview.md) | Response plans, incidents, timeline events, contacts, engagements, rotations |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
