@@ -24,7 +24,7 @@ description: >-
   FinSpace, GuardDuty, Security Hub, Detective, Macie, Inspector, Firewall Manager,
   Shield, Audit Manager, Security Lake, RAM, IAM Identity Center, Directory Service,
   Verified Permissions, Private CA, CloudHSM, Network Firewall, Trusted Advisor,
-  IAM Access Analyzer, Control Tower, Artifact, and Direct Connect.
+  IAM Access Analyzer, Control Tower, Artifact, Direct Connect, and S3 Control.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -161,6 +161,7 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Control Tower | [`controltower/overview.md`](references/controltower/overview.md) | Landing zones, controls, baselines |
 | Artifact | [`artifact/overview.md`](references/artifact/overview.md) | Reports, agreements, account settings |
 | Direct Connect | [`directconnect/overview.md`](references/directconnect/overview.md) | Connections, gateways, virtual interfaces, LAGs, BGP peering, MACsec, interconnects |
+| S3 Control | [`s3control/overview.md`](references/s3control/overview.md) | Access points, Object Lambda, Access Grants, Multi-Region Access Points, Batch Operations, Storage Lens, Outposts buckets |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
