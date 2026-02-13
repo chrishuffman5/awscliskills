@@ -6,7 +6,11 @@ description: >-
   references for ECS, EC2, ECR, S3, RDS, Route 53, IAM, CloudWatch, ELBv2,
   Lambda, DynamoDB, KMS, SNS, SQS, CloudFront, Secrets Manager, API Gateway,
   Step Functions, Cognito, SES v2, EventBridge, Systems Manager, ACM, STS,
-  CloudTrail, EFS, ElastiCache, WAF v2, CodeBuild, CodeDeploy, and CodePipeline.
+  CloudTrail, EFS, ElastiCache, WAF v2, CodeBuild, CodeDeploy, CodePipeline,
+  Cost Explorer, Budgets, Cost and Usage Report, Pricing, Savings Plans,
+  Billing, Marketplace Catalog, License Manager, AWS Health,
+  Payment Cryptography, Location Services, Resource Explorer, GameLift,
+  Well-Architected, and Resilience Hub.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -52,6 +56,21 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | CodeBuild | [`codebuild/overview.md`](references/codebuild/overview.md) | Projects, builds, build batches, report groups, source credentials, webhooks, fleets |
 | CodeDeploy | [`codedeploy/overview.md`](references/codedeploy/overview.md) | Applications, deployment groups, deployments, deployment configs, revisions |
 | CodePipeline | [`codepipeline/overview.md`](references/codepipeline/overview.md) | Pipelines, stages, actions, action types, webhooks |
+| Cost Explorer | [`ce/overview.md`](references/ce/overview.md) | Cost and usage, forecasts, anomalies, savings plans, reservations, rightsizing |
+| Budgets | [`budgets/overview.md`](references/budgets/overview.md) | Budgets, budget actions, notifications, subscribers |
+| Cost and Usage Report | [`cur/overview.md`](references/cur/overview.md) | Report definitions, S3 delivery |
+| Pricing | [`pricing/overview.md`](references/pricing/overview.md) | Services, products, attribute values, price lists |
+| Savings Plans | [`savingsplans/overview.md`](references/savingsplans/overview.md) | Savings plans, rates, offerings |
+| Billing | [`billing/overview.md`](references/billing/overview.md) | Billing views, source views, resource policies |
+| Marketplace Catalog | [`marketplace-catalog/overview.md`](references/marketplace-catalog/overview.md) | Entities, change sets, resource policies |
+| License Manager | [`license-manager/overview.md`](references/license-manager/overview.md) | Licenses, grants, configurations, Linux subscriptions, user subscriptions |
+| AWS Health | [`health/overview.md`](references/health/overview.md) | Events, affected entities, organization events |
+| Payment Cryptography | [`payment-cryptography/overview.md`](references/payment-cryptography/overview.md) | Keys, encryption, PIN/MAC operations, card validation |
+| Location Services | [`location/overview.md`](references/location/overview.md) | Maps, places, routes, geofences, trackers, API keys |
+| Resource Explorer | [`resource-explorer-2/overview.md`](references/resource-explorer-2/overview.md) | Indexes, views, search, supported resource types |
+| GameLift | [`gamelift/overview.md`](references/gamelift/overview.md) | Fleets, builds, game sessions, matchmaking, server groups |
+| Well-Architected | [`wellarchitected/overview.md`](references/wellarchitected/overview.md) | Workloads, lenses, reviews, milestones, profiles |
+| Resilience Hub | [`resiliencehub/overview.md`](references/resiliencehub/overview.md) | Apps, resiliency policies, assessments, recommendations |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
