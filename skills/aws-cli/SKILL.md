@@ -25,7 +25,7 @@ description: >-
   Shield, Audit Manager, Security Lake, RAM, IAM Identity Center, Directory Service,
   Verified Permissions, Private CA, CloudHSM, Network Firewall, Trusted Advisor,
   IAM Access Analyzer, Control Tower, Artifact, Direct Connect, S3 Control,
-  App Mesh, Cloud Map, Network Manager, and Route 53 Resolver.
+  App Mesh, Cloud Map, Network Manager, Route 53 Resolver, and Migration.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -167,6 +167,7 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Cloud Map | [`servicediscovery/overview.md`](references/servicediscovery/overview.md) | Namespaces, services, instances, service discovery, operations, health status |
 | Network Manager | [`networkmanager/overview.md`](references/networkmanager/overview.md) | Global networks, core networks, sites, devices, links, connections, Transit Gateway, attachments, Connect peers, route analysis |
 | Route 53 Resolver | [`route53resolver/overview.md`](references/route53resolver/overview.md) | Resolver endpoints, forwarding rules, DNS Firewall, query logging, DNSSEC, Outpost Resolvers, Route 53 Profiles |
+| Migration | [`migration/overview.md`](references/migration/overview.md) | MGN source servers, replication, launch config, cutover, waves, applications, connectors, actions, jobs, import/export, Migration Hub Config, Migration Hub Orchestrator workflows/steps/templates |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
