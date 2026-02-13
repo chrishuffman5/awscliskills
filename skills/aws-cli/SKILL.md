@@ -28,7 +28,8 @@ description: >-
   Cloud Map, Route 53 Resolver, Route 53 Recovery, Global Accelerator,
   Transfer Family, DataSync, Snow Family, Storage Gateway, Backup, FSx,
   S3 Control, Network Manager, Migration, Application Discovery, DMS,
-  S3 Outposts, Internet Monitor, and CloudWatch Network Monitor.
+  S3 Outposts, Internet Monitor, CloudWatch Network Monitor, Textract,
+  Kendra, Comprehend Medical, and HealthLake.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -184,6 +185,7 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | S3 Outposts | [`s3outposts/overview.md`](references/s3outposts/overview.md) | Endpoints, shared endpoints, Outposts with S3 capability |
 | Internet Monitor | [`internetmonitor/overview.md`](references/internetmonitor/overview.md) | Monitors, health events, internet events, performance/availability queries |
 | CloudWatch Network Monitor | [`networkmonitor/overview.md`](references/networkmonitor/overview.md) | Network monitors, probes, network performance monitoring |
+| Textract | [`textract/overview.md`](references/textract/overview.md) | Document text detection, form/table analysis, expense analysis, ID analysis, lending analysis, custom adapters |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
