@@ -25,7 +25,7 @@ description: >-
   Shield, Audit Manager, Security Lake, RAM, IAM Identity Center, Directory Service,
   Verified Permissions, Private CA, CloudHSM, Network Firewall, Trusted Advisor,
   IAM Access Analyzer, Control Tower, Artifact, Direct Connect, S3 Control,
-  and App Mesh.
+  App Mesh, and Cloud Map.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -164,6 +164,7 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Direct Connect | [`directconnect/overview.md`](references/directconnect/overview.md) | Connections, gateways, virtual interfaces, LAGs, BGP peering, MACsec, interconnects |
 | S3 Control | [`s3control/overview.md`](references/s3control/overview.md) | Access points, Object Lambda, Access Grants, Multi-Region Access Points, Batch Operations, Storage Lens, Outposts buckets |
 | App Mesh | [`appmesh/overview.md`](references/appmesh/overview.md) | Meshes, virtual nodes, virtual services, virtual routers, routes, virtual gateways, gateway routes |
+| Cloud Map | [`servicediscovery/overview.md`](references/servicediscovery/overview.md) | Namespaces, services, instances, service discovery, operations, health status |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
