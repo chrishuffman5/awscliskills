@@ -18,7 +18,10 @@ description: >-
   Systems Manager Incidents, WorkSpaces, AppStream 2.0, CodeCommit,
   CodeArtifact, CodeStar Connections, Cloud9, X-Ray, CodeGuru, FIS,
   Amplify, Device Farm, CloudWatch Synthetics, Application Insights,
-  Managed Grafana, and Managed Prometheus.
+  Managed Grafana, Managed Prometheus, Redshift, EMR, Athena, Glue, Kinesis,
+  Firehose, OpenSearch, Neptune, Timestream, QuickSight, Lake Formation, MWAA,
+  MSK, Data Exchange, Clean Rooms, Keyspaces, QLDB, DocumentDB, Data Pipeline,
+  and FinSpace.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -114,6 +117,26 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Application Insights | [`application-insights/overview.md`](references/application-insights/overview.md) | Applications, components, log patterns, problems, workloads |
 | Managed Grafana | [`grafana/overview.md`](references/grafana/overview.md) | Workspaces, authentication, permissions, service accounts, API keys |
 | Managed Prometheus | [`amp/overview.md`](references/amp/overview.md) | Workspaces, alert manager, rule groups, scrapers, logging, resource policies |
+| Redshift | [`redshift/overview.md`](references/redshift/overview.md) | Provisioned clusters, snapshots, parameter groups, data sharing, Redshift Data API, Serverless namespaces/workgroups |
+| EMR | [`emr/overview.md`](references/emr/overview.md) | Clusters, instance fleets/groups, steps, scaling, studios, EMR on EKS, EMR Serverless |
+| Athena | [`athena/overview.md`](references/athena/overview.md) | Query execution, workgroups, named queries, data catalogs, notebooks, sessions, capacity |
+| Glue | [`glue/overview.md`](references/glue/overview.md) | ETL jobs, crawlers, databases, tables, connections, workflows, schema registry, data quality |
+| Kinesis | [`kinesis/overview.md`](references/kinesis/overview.md) | Data streams, shards, records, consumers, Kinesis Data Analytics applications |
+| Firehose | [`firehose/overview.md`](references/firehose/overview.md) | Delivery streams, data ingestion, destination management, encryption |
+| OpenSearch | [`opensearch/overview.md`](references/opensearch/overview.md) | Domains, packages, VPC endpoints, indexes, data sources, Serverless collections/security |
+| Neptune | [`neptune/overview.md`](references/neptune/overview.md) | DB clusters, instances, snapshots, global clusters, Neptune Analytics graphs, import/export |
+| Timestream | [`timestream/overview.md`](references/timestream/overview.md) | Databases, tables, write records, queries, scheduled queries |
+| QuickSight | [`quicksight/overview.md`](references/quicksight/overview.md) | Dashboards, analyses, templates, data sets, data sources, users, groups, topics, embedding |
+| Lake Formation | [`lakeformation/overview.md`](references/lakeformation/overview.md) | Permissions, LF-tags, data cell filters, resource registration, transactions, credentials |
+| MWAA | [`mwaa/overview.md`](references/mwaa/overview.md) | Managed Apache Airflow environments, CLI tokens, web login, REST API |
+| MSK | [`msk/overview.md`](references/msk/overview.md) | Kafka clusters, configurations, topics, brokers, replicators, MSK Connect connectors |
+| Data Exchange | [`dataexchange/overview.md`](references/dataexchange/overview.md) | Data sets, revisions, assets, jobs, data grants, event actions |
+| Clean Rooms | [`cleanrooms/overview.md`](references/cleanrooms/overview.md) | Collaborations, memberships, configured tables, protected queries, privacy budgets, ML models |
+| Keyspaces | [`keyspaces/overview.md`](references/keyspaces/overview.md) | Keyspaces, tables, user-defined types, auto scaling, point-in-time recovery |
+| QLDB | [`qldb/overview.md`](references/qldb/overview.md) | Ledgers, journal exports, journal streams, blocks, revisions (end of support July 2025) |
+| DocumentDB | [`docdb/overview.md`](references/docdb/overview.md) | Clusters, instances, snapshots, parameter groups, global clusters, Elastic Clusters |
+| Data Pipeline | [`datapipeline/overview.md`](references/datapipeline/overview.md) | Pipelines, definitions, objects, task management (legacy service) |
+| FinSpace | [`finspace/overview.md`](references/finspace/overview.md) | Kdb environments, databases, clusters, dataviews, changesets, scaling groups, volumes |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
