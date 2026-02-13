@@ -1,10 +1,8 @@
 # Tags & Settings
 
-## Tags
-
 ### 4.1 `tag`
 
-Adds tags to a resource group. Tags are key-value pairs used to categorize and organize groups.
+Adds tags to a resource group. Unlike `tag-resource` in other services, this command uses the resource group ARN as the positional argument.
 
 **Synopsis:**
 ```bash
@@ -20,7 +18,7 @@ aws resource-groups tag \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--arn` | **Yes** | string | -- | ARN of the resource group to tag |
-| `--tags` | **Yes** | map | -- | Tags as key-value pairs. Shorthand: `KeyName1=string,KeyName2=string` |
+| `--tags` | **Yes** | map | -- | Tags to add. Shorthand: `KeyName1=string,KeyName2=string` |
 
 **Output Schema:**
 ```json
@@ -94,11 +92,9 @@ aws resource-groups get-tags \
 
 ---
 
-## Settings
-
 ### 4.4 `get-account-settings`
 
-Retrieves the current account-level settings for Resource Groups.
+Retrieves the current status of optional features in Resource Groups.
 
 **Synopsis:**
 ```bash
@@ -109,7 +105,9 @@ aws resource-groups get-account-settings \
 
 **Parameters:**
 
-This command takes no service-specific parameters.
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| -- | -- | -- | -- | No required parameters |
 
 **Output Schema:**
 ```json
@@ -126,7 +124,7 @@ This command takes no service-specific parameters.
 
 ### 4.5 `update-account-settings`
 
-Updates account-level settings for Resource Groups, such as enabling or disabling group lifecycle events.
+Turns on or turns off optional features in Resource Groups.
 
 **Synopsis:**
 ```bash
@@ -140,7 +138,7 @@ aws resource-groups update-account-settings \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--group-lifecycle-events-desired-status` | No | string | -- | Desired status: `ACTIVE` or `INACTIVE` |
+| `--group-lifecycle-events-desired-status` | No | string | None | Desired status: `ACTIVE` or `INACTIVE` |
 
 **Output Schema:**
 ```json
@@ -152,16 +150,3 @@ aws resource-groups update-account-settings \
     }
 }
 ```
-
----
-
-## Group Lifecycle Events
-
-When enabled, group lifecycle events send EventBridge events whenever resources are added to or removed from a group.
-
-| Status | Description |
-|--------|-------------|
-| `ACTIVE` | Group lifecycle events are enabled |
-| `INACTIVE` | Group lifecycle events are disabled |
-| `IN_PROGRESS` | Status change is in progress |
-| `ERROR` | An error occurred changing the status |

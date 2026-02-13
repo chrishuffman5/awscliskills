@@ -59,6 +59,6 @@ See [`index.md`](index.md) for the quick reference table and global options.
 | Group | File | Commands |
 |-------|------|----------|
 | Groups | [`groups.md`](groups.md) | create-group, get-group, list-groups, update-group, delete-group, list-group-resources |
-| Queries & Configuration | [`queries-configuration.md`](queries-configuration.md) | get-group-query, update-group-query, search-resources, get-group-configuration, put-group-configuration, group-resources, ungroup-resources |
+| Queries & Configuration | [`queries-configuration.md`](queries-configuration.md) | get-group-query, update-group-query, search-resources, get-group-configuration, put-group-configuration, group-resources, ungroup-resources, list-grouping-statuses |
 | Tag Sync | [`tag-sync.md`](tag-sync.md) | start-tag-sync-task, get-tag-sync-task, list-tag-sync-tasks, cancel-tag-sync-task |
 | Tags & Settings | [`tags-settings.md`](tags-settings.md) | tag, untag, get-tags, get-account-settings, update-account-settings |

@@ -21,6 +21,7 @@
 | `put-group-configuration` | Configuration | Set the service configuration for a group |
 | `group-resources` | Configuration | Add resources to a group manually |
 | `ungroup-resources` | Configuration | Remove resources from a group manually |
+| `list-grouping-statuses` | Configuration | List status of grouping/ungrouping requests |
 | `start-tag-sync-task` | Tag Sync | Start a tag sync task |
 | `get-tag-sync-task` | Tag Sync | Get tag sync task details |
 | `list-tag-sync-tasks` | Tag Sync | List tag sync tasks |

@@ -1,10 +1,8 @@
 # Queries & Configuration
 
-## Queries
-
 ### 2.1 `get-group-query`
 
-Retrieves the resource query associated with the specified resource group.
+Retrieves the resource query associated with a specified resource group.
 
 **Synopsis:**
 ```bash
@@ -20,7 +18,7 @@ aws resource-groups get-group-query \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--group-name` | No | string | -- | Name of the group (deprecated, use `--group`) |
-| `--group` | No | string | -- | Name or ARN of the group |
+| `--group` | No | string | -- | Name or ARN of the resource group |
 
 **Output Schema:**
 ```json
@@ -56,7 +54,7 @@ aws resource-groups update-group-query \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--group-name` | No | string | -- | Name of the group (deprecated, use `--group`) |
-| `--group` | No | string | -- | Name or ARN of the group |
+| `--group` | No | string | -- | Name or ARN of the resource group |
 | `--resource-query` | **Yes** | structure | -- | Updated resource query. Shorthand: `Type=string,Query=string` |
 
 **Output Schema:**
@@ -76,7 +74,7 @@ aws resource-groups update-group-query \
 
 ### 2.3 `search-resources`
 
-Returns a list of AWS resource identifiers that match the specified query. **Paginated operation.**
+Returns a list of AWS resource identifiers that match the specified query. The resources must be tagged or associated with a CloudFormation stack. **Paginated operation.**
 
 **Synopsis:**
 ```bash
@@ -94,7 +92,7 @@ aws resource-groups search-resources \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--resource-query` | **Yes** | structure | -- | Resource query. Shorthand: `Type=string,Query=string` |
-| `--starting-token` | No | string | None | Pagination token |
+| `--starting-token` | No | string | None | Pagination token from previous response |
 | `--page-size` | No | integer | None | Items per API call |
 | `--max-items` | No | integer | None | Total items to return |
 
@@ -119,11 +117,9 @@ aws resource-groups search-resources \
 
 ---
 
-## Configuration
-
 ### 2.4 `get-group-configuration`
 
-Retrieves the service configuration associated with the specified resource group.
+Retrieves the service configuration associated with a specified resource group.
 
 **Synopsis:**
 ```bash
@@ -137,7 +133,7 @@ aws resource-groups get-group-configuration \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--group` | No | string | -- | Name or ARN of the group |
+| `--group` | No | string | -- | Name or ARN of the resource group |
 
 **Output Schema:**
 ```json
@@ -175,7 +171,7 @@ aws resource-groups get-group-configuration \
 
 ### 2.5 `put-group-configuration`
 
-Attaches a service configuration to the specified group.
+Attaches a service configuration to the specified group. This creates or replaces the current group configuration.
 
 **Synopsis:**
 ```bash
@@ -190,31 +186,18 @@ aws resource-groups put-group-configuration \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--group` | No | string | -- | Name or ARN of the group |
+| `--group` | No | string | -- | Name or ARN of the resource group |
 | `--configuration` | No | list | None | Service configuration items |
 
 **Configuration Item Structure:**
 ```json
 [
     {
-        "Type": "AWS::ResourceGroups::Generic",
+        "Type": "string",
         "Parameters": [
             {
-                "Name": "allowed-resource-types",
-                "Values": ["AWS::EC2::Host"]
-            }
-        ]
-    },
-    {
-        "Type": "AWS::EC2::HostManagement",
-        "Parameters": [
-            {
-                "Name": "auto-allocate-host",
-                "Values": ["true"]
-            },
-            {
-                "Name": "auto-release-host",
-                "Values": ["true"]
+                "Name": "string",
+                "Values": ["string"]
             }
         ]
     }
@@ -230,7 +213,7 @@ aws resource-groups put-group-configuration \
 
 ### 2.6 `group-resources`
 
-Adds specified resources to a group. Works only with groups that have no resource query (manually managed groups).
+Adds specified resources to a specified group. Only resources that are not already members of the group are added.
 
 **Synopsis:**
 ```bash
@@ -245,8 +228,8 @@ aws resource-groups group-resources \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--group` | **Yes** | string | -- | Name or ARN of the group |
-| `--resource-arns` | **Yes** | list(string) | -- | List of resource ARNs to add |
+| `--group` | **Yes** | string | -- | Name or ARN of the resource group |
+| `--resource-arns` | **Yes** | list(string) | -- | List of resource ARNs to add to the group |
 
 **Output Schema:**
 ```json
@@ -271,7 +254,7 @@ aws resource-groups group-resources \
 
 ### 2.7 `ungroup-resources`
 
-Removes specified resources from a group. Works only with groups that have no resource query (manually managed groups).
+Removes specified resources from a specified group. The resources are not deleted, only removed from the group.
 
 **Synopsis:**
 ```bash
@@ -286,8 +269,8 @@ aws resource-groups ungroup-resources \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--group` | **Yes** | string | -- | Name or ARN of the group |
-| `--resource-arns` | **Yes** | list(string) | -- | List of resource ARNs to remove |
+| `--group` | **Yes** | string | -- | Name or ARN of the resource group |
+| `--resource-arns` | **Yes** | list(string) | -- | List of resource ARNs to remove from the group |
 
 **Output Schema:**
 ```json
@@ -305,5 +288,55 @@ aws resource-groups ungroup-resources \
             "ResourceArn": "string"
         }
     ]
+}
+```
+
+---
+
+### 2.8 `list-grouping-statuses`
+
+Returns the status of grouping and ungrouping requests. **Paginated operation.**
+
+**Synopsis:**
+```bash
+aws resource-groups list-grouping-statuses \
+    --group <value> \
+    [--filters <value>] \
+    [--starting-token <value>] \
+    [--page-size <value>] \
+    [--max-items <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--group` | **Yes** | string | -- | Name or ARN of the resource group |
+| `--filters` | No | list | None | Filters. Shorthand: `Name=string,Values=string,string ...` |
+| `--starting-token` | No | string | None | Pagination token from previous response |
+| `--page-size` | No | integer | None | Items per API call |
+| `--max-items` | No | integer | None | Total items to return |
+
+**Filter Names:**
+- `status` -- Filter by status: `SUCCESS`, `FAILED`, `IN_PROGRESS`, `SKIPPED`
+- `resource-arn` -- Filter by resource ARN
+
+**Output Schema:**
+```json
+{
+    "Group": "string",
+    "GroupingStatuses": [
+        {
+            "ResourceArn": "string",
+            "Action": "GROUP|UNGROUP",
+            "Status": "SUCCESS|FAILED|IN_PROGRESS|SKIPPED",
+            "ErrorMessage": "string",
+            "ErrorCode": "string",
+            "UpdatedAt": "timestamp"
+        }
+    ],
+    "NextToken": "string"
 }
 ```

@@ -1,10 +1,8 @@
 # Tag Sync
 
-Tag sync tasks keep resource group membership automatically synchronized with tag changes on resources.
-
 ### 3.1 `start-tag-sync-task`
 
-Starts a tag sync task that continuously synchronizes resource group membership based on tag changes.
+Creates a tag-sync task that continuously syncs tagged resources into a specified application group. The task keeps group membership up to date as tags change on resources.
 
 **Synopsis:**
 ```bash
@@ -24,7 +22,7 @@ aws resource-groups start-tag-sync-task \
 | `--group` | **Yes** | string | -- | Name or ARN of the resource group |
 | `--tag-key` | **Yes** | string | -- | Tag key to sync on |
 | `--tag-value` | **Yes** | string | -- | Tag value to sync on |
-| `--role-arn` | No | string | -- | IAM role ARN for the tag sync task |
+| `--role-arn` | No | string | None | IAM role ARN for the tag sync task |
 
 **Output Schema:**
 ```json
@@ -40,9 +38,34 @@ aws resource-groups start-tag-sync-task \
 
 ---
 
-### 3.2 `get-tag-sync-task`
+### 3.2 `cancel-tag-sync-task`
 
-Gets information about a specific tag sync task.
+Cancels a tag-sync task.
+
+**Synopsis:**
+```bash
+aws resource-groups cancel-tag-sync-task \
+    --task-arn <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--task-arn` | **Yes** | string | -- | ARN of the tag sync task to cancel |
+
+**Output Schema:**
+```json
+{}
+```
+
+---
+
+### 3.3 `get-tag-sync-task`
+
+Gets information about a specified tag-sync task.
 
 **Synopsis:**
 ```bash
@@ -75,9 +98,9 @@ aws resource-groups get-tag-sync-task \
 
 ---
 
-### 3.3 `list-tag-sync-tasks`
+### 3.4 `list-tag-sync-tasks`
 
-Lists tag sync tasks. **Paginated operation.**
+Lists the tag-sync tasks. **Paginated operation.**
 
 **Synopsis:**
 ```bash
@@ -95,7 +118,7 @@ aws resource-groups list-tag-sync-tasks \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--filters` | No | list | None | Filters. Shorthand: `GroupArn=string,GroupName=string` |
-| `--starting-token` | No | string | None | Pagination token |
+| `--starting-token` | No | string | None | Pagination token from previous response |
 | `--page-size` | No | integer | None | Items per API call |
 | `--max-items` | No | integer | None | Total items to return |
 
@@ -117,29 +140,4 @@ aws resource-groups list-tag-sync-tasks \
     ],
     "NextToken": "string"
 }
-```
-
----
-
-### 3.4 `cancel-tag-sync-task`
-
-Cancels a tag sync task.
-
-**Synopsis:**
-```bash
-aws resource-groups cancel-tag-sync-task \
-    --task-arn <value> \
-    [--cli-input-json | --cli-input-yaml] \
-    [--generate-cli-skeleton <value>]
-```
-
-**Parameters:**
-
-| Parameter | Required | Type | Default | Description |
-|-----------|----------|------|---------|-------------|
-| `--task-arn` | **Yes** | string | -- | ARN of the tag sync task to cancel |
-
-**Output Schema:**
-```json
-{}
 ```
