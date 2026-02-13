@@ -21,7 +21,10 @@ description: >-
   Managed Grafana, Managed Prometheus, Redshift, EMR, Athena, Glue, Kinesis,
   Firehose, OpenSearch, Neptune, Timestream, QuickSight, Lake Formation, MWAA,
   MSK, Data Exchange, Clean Rooms, Keyspaces, QLDB, DocumentDB, Data Pipeline,
-  and FinSpace.
+  FinSpace, GuardDuty, Security Hub, Detective, Macie, Inspector, Firewall Manager,
+  Shield, Audit Manager, Security Lake, RAM, IAM Identity Center, Directory Service,
+  Verified Permissions, Private CA, CloudHSM, Network Firewall, Trusted Advisor,
+  IAM Access Analyzer, Control Tower, and Artifact.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -137,6 +140,26 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | DocumentDB | [`docdb/overview.md`](references/docdb/overview.md) | Clusters, instances, snapshots, parameter groups, global clusters, Elastic Clusters |
 | Data Pipeline | [`datapipeline/overview.md`](references/datapipeline/overview.md) | Pipelines, definitions, objects, task management (legacy service) |
 | FinSpace | [`finspace/overview.md`](references/finspace/overview.md) | Kdb environments, databases, clusters, dataviews, changesets, scaling groups, volumes |
+| GuardDuty | [`guardduty/overview.md`](references/guardduty/overview.md) | Detectors, findings, filters, IP sets, threat intel sets, malware protection, members, organization |
+| Security Hub | [`securityhub/overview.md`](references/securityhub/overview.md) | Hub management, findings, insights, standards, security controls, automation rules, configuration policies |
+| Detective | [`detective/overview.md`](references/detective/overview.md) | Behavior graphs, members, investigations, data sources, organization |
+| Macie | [`macie/overview.md`](references/macie/overview.md) | Classification jobs, findings, filters, allow lists, data identifiers, buckets, automated discovery |
+| Inspector | [`inspector/overview.md`](references/inspector/overview.md) | Enablement, findings, filters, coverage, CIS scans, code security, SBOM export |
+| Firewall Manager | [`fms/overview.md`](references/fms/overview.md) | Admin accounts, policies, apps/protocols lists, resource sets, third-party firewalls |
+| Shield | [`shield/overview.md`](references/shield/overview.md) | Subscription, protections, attacks, DRT access, proactive engagement, automatic response |
+| Audit Manager | [`auditmanager/overview.md`](references/auditmanager/overview.md) | Assessments, frameworks, controls, reports, evidence, delegations, insights |
+| Security Lake | [`securitylake/overview.md`](references/securitylake/overview.md) | Data lake configuration, log sources, subscribers, organization |
+| RAM | [`ram/overview.md`](references/ram/overview.md) | Resource shares, invitations, permissions, organizations |
+| IAM Identity Center | [`identity-center/overview.md`](references/identity-center/overview.md) | Instances, permission sets, account assignments, applications, trusted token issuers, identity store |
+| Directory Service | [`ds/overview.md`](references/ds/overview.md) | Directories, hybrid AD, trusts, conditional forwarders, snapshots, networking, certificates |
+| Verified Permissions | [`verifiedpermissions/overview.md`](references/verifiedpermissions/overview.md) | Policy stores, policies, policy templates, identity sources, authorization |
+| Private CA | [`acm-pca/overview.md`](references/acm-pca/overview.md) | Certificate authorities, certificates, audit reports, permissions, policies |
+| CloudHSM | [`cloudhsmv2/overview.md`](references/cloudhsmv2/overview.md) | Clusters, HSMs, backups, resource policies |
+| Network Firewall | [`network-firewall/overview.md`](references/network-firewall/overview.md) | Firewalls, firewall policies, rule groups, TLS inspection, logging, analysis |
+| Trusted Advisor | [`trustedadvisor/overview.md`](references/trustedadvisor/overview.md) | Recommendations, organization recommendations, support cases, Trusted Advisor checks |
+| IAM Access Analyzer | [`accessanalyzer/overview.md`](references/accessanalyzer/overview.md) | Analyzers, findings, archive rules, access previews, policy tools |
+| Control Tower | [`controltower/overview.md`](references/controltower/overview.md) | Landing zones, controls, baselines |
+| Artifact | [`artifact/overview.md`](references/artifact/overview.md) | Reports, agreements, account settings |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 

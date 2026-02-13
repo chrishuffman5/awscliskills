@@ -1,6 +1,6 @@
 # AWS CLI Skills for Claude Code
 
-A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 101 AWS services, sourced from official AWS documentation.
+A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 121 AWS services, sourced from official AWS documentation.
 
 ## Covered Services
 
@@ -107,6 +107,26 @@ A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). 
 | DocumentDB | `references/docdb/` | Clusters, instances, snapshots, parameter groups, global clusters, Elastic Clusters |
 | Data Pipeline | `references/datapipeline/` | Pipelines, definitions, objects, task management (legacy service) |
 | FinSpace | `references/finspace/` | Kdb environments, databases, clusters, dataviews, changesets, scaling groups |
+| GuardDuty | `references/guardduty/` | Detectors, findings, filters, IP sets, threat intel sets, malware protection, members |
+| Security Hub | `references/securityhub/` | Hub management, findings, insights, standards, security controls, automation rules |
+| Detective | `references/detective/` | Behavior graphs, members, investigations, data sources, organization |
+| Macie | `references/macie/` | Classification jobs, findings, filters, allow lists, data identifiers, buckets, automated discovery |
+| Inspector | `references/inspector/` | Enablement, findings, filters, coverage, CIS scans, code security, SBOM export |
+| Firewall Manager | `references/fms/` | Admin accounts, policies, apps/protocols lists, resource sets, third-party firewalls |
+| Shield | `references/shield/` | Subscription, protections, attacks, DRT access, proactive engagement, automatic response |
+| Audit Manager | `references/auditmanager/` | Assessments, frameworks, controls, reports, evidence, delegations, insights |
+| Security Lake | `references/securitylake/` | Data lake configuration, log sources, subscribers, organization |
+| RAM | `references/ram/` | Resource shares, invitations, permissions, organizations |
+| IAM Identity Center | `references/identity-center/` | Instances, permission sets, account assignments, applications, identity store |
+| Directory Service | `references/ds/` | Directories, hybrid AD, trusts, conditional forwarders, snapshots, certificates |
+| Verified Permissions | `references/verifiedpermissions/` | Policy stores, policies, policy templates, identity sources, authorization |
+| Private CA | `references/acm-pca/` | Certificate authorities, certificates, audit reports, permissions, policies |
+| CloudHSM | `references/cloudhsmv2/` | Clusters, HSMs, backups, resource policies |
+| Network Firewall | `references/network-firewall/` | Firewalls, firewall policies, rule groups, TLS inspection, logging |
+| Trusted Advisor | `references/trustedadvisor/` | Recommendations, organization recommendations, support cases |
+| IAM Access Analyzer | `references/accessanalyzer/` | Analyzers, findings, archive rules, access previews, policy tools |
+| Control Tower | `references/controltower/` | Landing zones, controls, baselines |
+| Artifact | `references/artifact/` | Reports, agreements, account settings |
 
 ## Adding the Skill to Your Project
 
@@ -117,7 +137,7 @@ Claude Code loads skills from a `skills/` directory in your project root. Copy t
 cp -r /path/to/awscliskills/skills/aws-cli skills/
 ```
 
-That's it — one directory gives you all 101 services.
+That's it — one directory gives you all 121 services.
 
 ### Alternative: Git subtree (stays synced with updates)
 
@@ -147,7 +167,7 @@ skills/aws-cli/
       ...
     ec2/
     ecr/
-    ... (101 service directories)
+    ... (121 service directories)
 ```
 
 **SKILL.md** contains:
