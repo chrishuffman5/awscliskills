@@ -24,8 +24,11 @@ description: >-
   FinSpace, GuardDuty, Security Hub, Detective, Macie, Inspector, Firewall Manager,
   Shield, Audit Manager, Security Lake, RAM, IAM Identity Center, Directory Service,
   Verified Permissions, Private CA, CloudHSM, Network Firewall, Trusted Advisor,
-  IAM Access Analyzer, Control Tower, Artifact, Direct Connect, S3 Control,
-  App Mesh, Cloud Map, Network Manager, Route 53 Resolver, and Migration.
+  IAM Access Analyzer, Control Tower, Artifact, Direct Connect, App Mesh,
+  Cloud Map, Route 53 Resolver, Route 53 Recovery, Global Accelerator,
+  Transfer Family, DataSync, Snow Family, Storage Gateway, Backup, FSx,
+  S3 Control, Network Manager, Migration, Application Discovery, DMS,
+  S3 Outposts, Internet Monitor, and CloudWatch Network Monitor.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -168,6 +171,19 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Network Manager | [`networkmanager/overview.md`](references/networkmanager/overview.md) | Global networks, core networks, sites, devices, links, connections, Transit Gateway, attachments, Connect peers, route analysis |
 | Route 53 Resolver | [`route53resolver/overview.md`](references/route53resolver/overview.md) | Resolver endpoints, forwarding rules, DNS Firewall, query logging, DNSSEC, Outpost Resolvers, Route 53 Profiles |
 | Migration | [`migration/overview.md`](references/migration/overview.md) | MGN source servers, replication, launch config, cutover, waves, applications, connectors, actions, jobs, import/export, Migration Hub Config, Migration Hub Orchestrator workflows/steps/templates |
+| Route 53 Recovery | [`route53-recovery/overview.md`](references/route53-recovery/overview.md) | Recovery clusters, control panels, routing controls, safety rules, readiness checks, recovery groups, cells |
+| Global Accelerator | [`globalaccelerator/overview.md`](references/globalaccelerator/overview.md) | Accelerators, listeners, endpoint groups, custom routing, cross-account attachments, BYOIP |
+| Transfer Family | [`transfer/overview.md`](references/transfer/overview.md) | SFTP/FTPS/FTP/AS2 servers, users, access, connectors, agreements, workflows, host keys, certificates, web apps |
+| DataSync | [`datasync/overview.md`](references/datasync/overview.md) | Agents, tasks, task executions, locations (S3, EFS, FSx, NFS, SMB, HDFS, Azure Blob) |
+| Snow Family | [`snowball/overview.md`](references/snowball/overview.md) | Snowball/Snowball Edge/Snowcone jobs, clusters, addresses, long-term pricing, shipping |
+| Storage Gateway | [`storagegateway/overview.md`](references/storagegateway/overview.md) | Gateways, file shares (NFS/SMB), iSCSI volumes, tape gateway, cache, bandwidth, file system associations |
+| Backup | [`backup/overview.md`](references/backup/overview.md) | Backup plans, vaults, backup/copy/restore jobs, recovery points, frameworks, reports, restore testing, legal holds, Backup Gateway |
+| FSx | [`fsx/overview.md`](references/fsx/overview.md) | File systems (Windows/Lustre/ONTAP/OpenZFS), backups, volumes, snapshots, storage virtual machines, data repository, file caches |
+| Application Discovery | [`discovery/overview.md`](references/discovery/overview.md) | Agents, configurations, applications, tags, export/import tasks |
+| DMS | [`dms/overview.md`](references/dms/overview.md) | Replication instances, endpoints, replication tasks, serverless replication, data migrations, migration projects, Fleet Advisor |
+| S3 Outposts | [`s3outposts/overview.md`](references/s3outposts/overview.md) | Endpoints, shared endpoints, Outposts with S3 capability |
+| Internet Monitor | [`internetmonitor/overview.md`](references/internetmonitor/overview.md) | Monitors, health events, internet events, performance/availability queries |
+| CloudWatch Network Monitor | [`networkmonitor/overview.md`](references/networkmonitor/overview.md) | Network monitors, probes, network performance monitoring |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 

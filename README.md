@@ -1,6 +1,6 @@
 # AWS CLI Skills for Claude Code
 
-A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 121 AWS services, sourced from official AWS documentation.
+A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 141 AWS services, sourced from official AWS documentation.
 
 ## Covered Services
 
@@ -127,6 +127,26 @@ A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). 
 | IAM Access Analyzer | `references/accessanalyzer/` | Analyzers, findings, archive rules, access previews, policy tools |
 | Control Tower | `references/controltower/` | Landing zones, controls, baselines |
 | Artifact | `references/artifact/` | Reports, agreements, account settings |
+| Direct Connect | `references/directconnect/` | Connections, gateways, virtual interfaces, LAGs, BGP peering, MACsec |
+| App Mesh | `references/appmesh/` | Meshes, virtual nodes, virtual services, virtual routers, routes, virtual gateways |
+| Cloud Map | `references/servicediscovery/` | Namespaces, services, instances, service discovery, health status |
+| Route 53 Resolver | `references/route53resolver/` | Resolver endpoints, rules, DNS Firewall, query logging, DNSSEC, Profiles |
+| Route 53 Recovery | `references/route53-recovery/` | Recovery clusters, control panels, routing controls, safety rules, readiness checks |
+| Global Accelerator | `references/globalaccelerator/` | Accelerators, listeners, endpoint groups, custom routing, BYOIP |
+| Transfer Family | `references/transfer/` | SFTP/FTPS/FTP/AS2 servers, users, connectors, agreements, workflows, web apps |
+| DataSync | `references/datasync/` | Agents, tasks, locations (S3, EFS, FSx, NFS, SMB, HDFS, Azure Blob) |
+| Snow Family | `references/snowball/` | Snowball/Snowball Edge/Snowcone jobs, clusters, addresses, shipping |
+| Storage Gateway | `references/storagegateway/` | Gateways, file shares, iSCSI volumes, tape gateway, cache, bandwidth |
+| Backup | `references/backup/` | Backup plans, vaults, jobs, recovery points, frameworks, reports, Backup Gateway |
+| FSx | `references/fsx/` | File systems (Windows/Lustre/ONTAP/OpenZFS), volumes, snapshots, data repository |
+| S3 Control | `references/s3control/` | Access points, Object Lambda, Access Grants, Batch Operations, Storage Lens |
+| Network Manager | `references/networkmanager/` | Global networks, core networks, sites, devices, attachments, route analysis |
+| Migration | `references/migration/` | MGN source servers, replication, cutover, Migration Hub Config, Orchestrator |
+| Application Discovery | `references/discovery/` | Agents, configurations, applications, export/import tasks |
+| DMS | `references/dms/` | Replication instances, endpoints, tasks, serverless replication, data migrations |
+| S3 Outposts | `references/s3outposts/` | Endpoints, shared endpoints, Outposts with S3 capability |
+| Internet Monitor | `references/internetmonitor/` | Monitors, health events, internet events, queries |
+| CloudWatch Network Monitor | `references/networkmonitor/` | Network monitors, probes, performance monitoring |
 
 ## Adding the Skill to Your Project
 
@@ -137,7 +157,7 @@ Claude Code loads skills from a `skills/` directory in your project root. Copy t
 cp -r /path/to/awscliskills/skills/aws-cli skills/
 ```
 
-That's it — one directory gives you all 121 services.
+That's it — one directory gives you all 141 services.
 
 ### Alternative: Git subtree (stays synced with updates)
 
@@ -167,7 +187,7 @@ skills/aws-cli/
       ...
     ec2/
     ecr/
-    ... (121 service directories)
+    ... (141 service directories)
 ```
 
 **SKILL.md** contains:
