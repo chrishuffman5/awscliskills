@@ -186,6 +186,7 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Internet Monitor | [`internetmonitor/overview.md`](references/internetmonitor/overview.md) | Monitors, health events, internet events, performance/availability queries |
 | CloudWatch Network Monitor | [`networkmonitor/overview.md`](references/networkmonitor/overview.md) | Network monitors, probes, network performance monitoring |
 | Textract | [`textract/overview.md`](references/textract/overview.md) | Document text detection, form/table analysis, expense analysis, ID analysis, lending analysis, custom adapters |
+| Kendra | [`kendra/overview.md`](references/kendra/overview.md) | Intelligent search indexes, data sources, FAQs, thesauri, query suggestions, featured results, experiences, intelligent ranking |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
