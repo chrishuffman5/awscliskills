@@ -70,7 +70,7 @@ See [`index.md`](index.md) for the quick reference table and global options.
 
 | Group | File | Commands |
 |-------|------|----------|
-| Clusters | [`clusters.md`](clusters.md) | create-cluster, delete-cluster, describe-cluster, list-clusters, update-cluster-config, update-cluster-version, update-kubeconfig |
+| Clusters | [`clusters.md`](clusters.md) | create-cluster, delete-cluster, describe-cluster, describe-cluster-versions, list-clusters, update-cluster-config, update-cluster-version, register-cluster, deregister-cluster, update-kubeconfig, get-token |
 | Node Groups | [`nodegroups.md`](nodegroups.md) | create-nodegroup, delete-nodegroup, describe-nodegroup, list-nodegroups, update-nodegroup-config, update-nodegroup-version |
 | Fargate Profiles | [`fargate-profiles.md`](fargate-profiles.md) | create-fargate-profile, delete-fargate-profile, describe-fargate-profile, list-fargate-profiles |
 | Add-ons | [`addons.md`](addons.md) | create-addon, delete-addon, describe-addon, describe-addon-versions, describe-addon-configuration, list-addons, update-addon |
@@ -78,7 +78,7 @@ See [`index.md`](index.md) for the quick reference table and global options.
 | Identity Providers | [`identity-providers.md`](identity-providers.md) | associate-identity-provider-config, disassociate-identity-provider-config, describe-identity-provider-config, list-identity-provider-configs |
 | Pod Identity | [`pod-identity.md`](pod-identity.md) | create-pod-identity-association, delete-pod-identity-association, describe-pod-identity-association, list-pod-identity-associations, update-pod-identity-association |
 | Encryption & Insights | [`encryption-insights.md`](encryption-insights.md) | associate-encryption-config, describe-insight, list-insights |
-| Capabilities | [`capabilities.md`](capabilities.md) | describe-cluster-versions |
+| Capabilities | [`capabilities.md`](capabilities.md) | create-capability, delete-capability, describe-capability, list-capabilities, update-capability |
 | EKS Anywhere | [`eks-anywhere.md`](eks-anywhere.md) | create-eks-anywhere-subscription, delete-eks-anywhere-subscription, describe-eks-anywhere-subscription, list-eks-anywhere-subscriptions, update-eks-anywhere-subscription |
 | Updates & Tags | [`updates-tags.md`](updates-tags.md) | describe-update, list-updates, tag-resource, untag-resource, list-tags-for-resource |
 | Wait | [`wait.md`](wait.md) | wait cluster-active, wait cluster-deleted, wait nodegroup-active, wait nodegroup-deleted, wait addon-active, wait addon-deleted, wait fargate-profile-active, wait fargate-profile-deleted |

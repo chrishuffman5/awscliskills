@@ -2,7 +2,7 @@
 
 ### 11.1 `describe-update`
 
-Returns descriptive information about an update to an EKS resource.
+Describes an update to an EKS resource (cluster, node group, or add-on).
 
 **Synopsis:**
 ```bash
@@ -21,8 +21,8 @@ aws eks describe-update \
 |-----------|----------|------|---------|-------------|
 | `--name` | **Yes** | string | -- | Cluster name |
 | `--update-id` | **Yes** | string | -- | Update ID |
-| `--nodegroup-name` | No | string | None | Node group name (if update is for a node group) |
-| `--addon-name` | No | string | None | Add-on name (if update is for an add-on) |
+| `--nodegroup-name` | No | string | None | Node group name (for node group updates) |
+| `--addon-name` | No | string | None | Add-on name (for add-on updates) |
 
 **Output Schema:**
 ```json
@@ -30,7 +30,7 @@ aws eks describe-update \
     "update": {
         "id": "string",
         "status": "InProgress|Failed|Cancelled|Successful",
-        "type": "VersionUpdate|EndpointAccessUpdate|LoggingUpdate|ConfigUpdate|AssociateIdentityProviderConfig|DisassociateIdentityProviderConfig|AssociateEncryptionConfig|AddonUpdate|VpcConfigUpdate|AccessConfigUpdate|UpgradePolicyUpdate|ZonalShiftConfigUpdate",
+        "type": "VersionUpdate|EndpointAccessUpdate|LoggingUpdate|ConfigUpdate|AssociateIdentityProviderConfig|DisassociateIdentityProviderConfig|AssociateEncryptionConfig|AddonUpdate|VpcConfigUpdate|AccessConfigUpdate",
         "params": [
             {
                 "type": "string",
@@ -53,7 +53,7 @@ aws eks describe-update \
 
 ### 11.2 `list-updates`
 
-Lists the updates associated with an EKS resource. **Paginated operation.**
+Lists updates associated with an EKS resource. **Paginated operation.**
 
 **Synopsis:**
 ```bash
@@ -62,7 +62,6 @@ aws eks list-updates \
     [--nodegroup-name <value>] \
     [--addon-name <value>] \
     [--starting-token <value>] \
-    [--page-size <value>] \
     [--max-items <value>] \
     [--cli-input-json | --cli-input-yaml] \
     [--generate-cli-skeleton <value>]
@@ -73,10 +72,9 @@ aws eks list-updates \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--name` | **Yes** | string | -- | Cluster name |
-| `--nodegroup-name` | No | string | None | Filter by node group |
-| `--addon-name` | No | string | None | Filter by add-on |
+| `--nodegroup-name` | No | string | None | Node group name |
+| `--addon-name` | No | string | None | Add-on name |
 | `--starting-token` | No | string | None | Pagination token |
-| `--page-size` | No | integer | None | Items per page |
 | `--max-items` | No | integer | None | Max items to return |
 
 **Output Schema:**
@@ -91,7 +89,7 @@ aws eks list-updates \
 
 ### 11.3 `tag-resource`
 
-Adds tags to an Amazon EKS resource.
+Adds tags to an EKS resource.
 
 **Synopsis:**
 ```bash
@@ -106,8 +104,8 @@ aws eks tag-resource \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--resource-arn` | **Yes** | string | -- | Resource ARN |
-| `--tags` | **Yes** | map | -- | Tags as key=value pairs |
+| `--resource-arn` | **Yes** | string | -- | ARN of the EKS resource |
+| `--tags` | **Yes** | map | -- | Tags as key-value pairs. Shorthand: `Key1=Value1,Key2=Value2` |
 
 **Output:** No output on success (empty JSON `{}`).
 
@@ -115,7 +113,7 @@ aws eks tag-resource \
 
 ### 11.4 `untag-resource`
 
-Removes tags from an Amazon EKS resource.
+Removes tags from an EKS resource.
 
 **Synopsis:**
 ```bash
@@ -130,7 +128,7 @@ aws eks untag-resource \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--resource-arn` | **Yes** | string | -- | Resource ARN |
+| `--resource-arn` | **Yes** | string | -- | ARN of the EKS resource |
 | `--tag-keys` | **Yes** | list(string) | -- | Tag keys to remove |
 
 **Output:** No output on success (empty JSON `{}`).
@@ -139,7 +137,7 @@ aws eks untag-resource \
 
 ### 11.5 `list-tags-for-resource`
 
-Lists the tags for an Amazon EKS resource.
+Lists tags for an EKS resource.
 
 **Synopsis:**
 ```bash
@@ -153,11 +151,13 @@ aws eks list-tags-for-resource \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--resource-arn` | **Yes** | string | -- | Resource ARN |
+| `--resource-arn` | **Yes** | string | -- | ARN of the EKS resource |
 
 **Output Schema:**
 ```json
 {
-    "tags": {"string": "string"}
+    "tags": {
+        "key": "value"
+    }
 }
 ```

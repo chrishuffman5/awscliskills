@@ -1,4 +1,4 @@
-# EKS Anywhere
+# EKS Anywhere Subscriptions
 
 ### 10.1 `create-eks-anywhere-subscription`
 
@@ -9,11 +9,11 @@ Creates an EKS Anywhere subscription for on-premises cluster support.
 aws eks create-eks-anywhere-subscription \
     --name <value> \
     --term <value> \
+    [--auto-renew | --no-auto-renew] \
     [--license-quantity <value>] \
     [--license-type <value>] \
-    [--auto-renew | --no-auto-renew] \
-    [--client-request-token <value>] \
     [--tags <value>] \
+    [--client-request-token <value>] \
     [--cli-input-json | --cli-input-yaml] \
     [--generate-cli-skeleton <value>]
 ```
@@ -24,11 +24,11 @@ aws eks create-eks-anywhere-subscription \
 |-----------|----------|------|---------|-------------|
 | `--name` | **Yes** | string | -- | Subscription name |
 | `--term` | **Yes** | structure | -- | Subscription term. Shorthand: `duration=integer,unit=MONTHS` |
+| `--auto-renew` | No | boolean | false | Auto-renew subscription |
 | `--license-quantity` | No | integer | None | Number of licenses |
-| `--license-type` | No | string | `Cluster` | `Cluster` |
-| `--auto-renew` | No | boolean | true | Auto-renew subscription |
-| `--client-request-token` | No | string | None | Idempotency token |
+| `--license-type` | No | string | None | License type: `Cluster` |
 | `--tags` | No | map | None | Tags |
+| `--client-request-token` | No | string | None | Idempotency token |
 
 **Output Schema:**
 ```json
@@ -45,10 +45,10 @@ aws eks create-eks-anywhere-subscription \
             "duration": "integer",
             "unit": "MONTHS"
         },
-        "status": "string",
-        "autoRenew": true|false,
+        "status": "CREATING|ACTIVE|UPDATING|EXPIRING|EXPIRED|DELETING",
+        "autoRenew": true,
         "licenseArns": ["string"],
-        "tags": {"string": "string"}
+        "tags": {"key": "value"}
     }
 }
 ```
@@ -73,7 +73,19 @@ aws eks delete-eks-anywhere-subscription \
 |-----------|----------|------|---------|-------------|
 | `--id` | **Yes** | string | -- | Subscription ID |
 
-**Output Schema:** Same subscription object.
+**Output Schema:**
+```json
+{
+    "subscription": {
+        "id": "string",
+        "arn": "string",
+        "status": "DELETING",
+        "createdAt": "timestamp",
+        "effectiveDate": "timestamp",
+        "expirationDate": "timestamp"
+    }
+}
+```
 
 ---
 
@@ -95,7 +107,28 @@ aws eks describe-eks-anywhere-subscription \
 |-----------|----------|------|---------|-------------|
 | `--id` | **Yes** | string | -- | Subscription ID |
 
-**Output Schema:** Same as `create-eks-anywhere-subscription` output.
+**Output Schema:**
+```json
+{
+    "subscription": {
+        "id": "string",
+        "arn": "string",
+        "createdAt": "timestamp",
+        "effectiveDate": "timestamp",
+        "expirationDate": "timestamp",
+        "licenseQuantity": "integer",
+        "licenseType": "Cluster",
+        "term": {
+            "duration": "integer",
+            "unit": "MONTHS"
+        },
+        "status": "CREATING|ACTIVE|UPDATING|EXPIRING|EXPIRED|DELETING",
+        "autoRenew": true,
+        "licenseArns": ["string"],
+        "tags": {"key": "value"}
+    }
+}
+```
 
 ---
 
@@ -108,7 +141,6 @@ Lists EKS Anywhere subscriptions. **Paginated operation.**
 aws eks list-eks-anywhere-subscriptions \
     [--include-status <value>] \
     [--starting-token <value>] \
-    [--page-size <value>] \
     [--max-items <value>] \
     [--cli-input-json | --cli-input-yaml] \
     [--generate-cli-skeleton <value>]
@@ -118,9 +150,8 @@ aws eks list-eks-anywhere-subscriptions \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--include-status` | No | list(string) | None | Filter by status |
+| `--include-status` | No | list(string) | None | Filter by status: `CREATING`, `ACTIVE`, `UPDATING`, `EXPIRING`, `EXPIRED`, `DELETING` |
 | `--starting-token` | No | string | None | Pagination token |
-| `--page-size` | No | integer | None | Items per page |
 | `--max-items` | No | integer | None | Max items to return |
 
 **Output Schema:**
@@ -134,12 +165,15 @@ aws eks list-eks-anywhere-subscriptions \
             "effectiveDate": "timestamp",
             "expirationDate": "timestamp",
             "licenseQuantity": "integer",
-            "licenseType": "Cluster",
-            "term": {},
+            "licenseType": "string",
+            "term": {
+                "duration": "integer",
+                "unit": "MONTHS"
+            },
             "status": "string",
-            "autoRenew": true|false,
+            "autoRenew": true,
             "licenseArns": ["string"],
-            "tags": {}
+            "tags": {"key": "value"}
         }
     ],
     "nextToken": "string"
@@ -167,7 +201,20 @@ aws eks update-eks-anywhere-subscription \
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
 | `--id` | **Yes** | string | -- | Subscription ID |
-| `--auto-renew` | **Yes** | boolean | -- | Enable or disable auto-renew |
+| `--auto-renew` | **Yes** | boolean | -- | Enable or disable auto-renewal |
 | `--client-request-token` | No | string | None | Idempotency token |
 
-**Output Schema:** Same as `create-eks-anywhere-subscription` output.
+**Output Schema:**
+```json
+{
+    "subscription": {
+        "id": "string",
+        "arn": "string",
+        "status": "UPDATING",
+        "autoRenew": true,
+        "createdAt": "timestamp",
+        "effectiveDate": "timestamp",
+        "expirationDate": "timestamp"
+    }
+}
+```

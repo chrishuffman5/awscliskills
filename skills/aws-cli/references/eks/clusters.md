@@ -308,3 +308,168 @@ aws eks update-kubeconfig \
 | `--alias` | No | string | cluster ARN | Alias for the cluster context |
 
 **Output:** Prints status message indicating the kubeconfig was updated.
+
+---
+
+### 1.8 `describe-cluster-versions`
+
+Lists available Kubernetes versions for EKS clusters, with optional filtering.
+
+**Synopsis:**
+```bash
+aws eks describe-cluster-versions \
+    [--cluster-type <value>] \
+    [--default-only | --no-default-only] \
+    [--include-all | --no-include-all] \
+    [--cluster-versions-only | --no-cluster-versions-only] \
+    [--status <value>] \
+    [--starting-token <value>] \
+    [--max-items <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--cluster-type` | No | string | None | Filter by cluster type |
+| `--default-only` | No | boolean | false | Only return the default version |
+| `--include-all` | No | boolean | false | Include all versions including deprecated |
+| `--cluster-versions-only` | No | boolean | false | Return only version strings |
+| `--status` | No | string | None | Filter by version status |
+| `--starting-token` | No | string | None | Pagination token |
+| `--max-items` | No | integer | None | Max items to return |
+
+**Output Schema:**
+```json
+{
+    "clusterVersions": [
+        {
+            "clusterVersion": "string",
+            "clusterType": "string",
+            "defaultPlatformVersion": "string",
+            "defaultVersion": true,
+            "releaseDate": "timestamp",
+            "endOfStandardSupportDate": "timestamp",
+            "endOfExtendedSupportDate": "timestamp",
+            "status": "string",
+            "kubernetesPatchVersion": "string"
+        }
+    ],
+    "nextToken": "string"
+}
+```
+
+---
+
+### 1.9 `register-cluster`
+
+Registers an external Kubernetes cluster with Amazon EKS to enable EKS Connector.
+
+**Synopsis:**
+```bash
+aws eks register-cluster \
+    --name <value> \
+    --connector-config <value> \
+    [--client-request-token <value>] \
+    [--tags <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--name` | **Yes** | string | -- | Name for the connected cluster |
+| `--connector-config` | **Yes** | structure | -- | Connector configuration. Shorthand: `roleArn=string,provider=EKS_ANYWHERE\|ANTHOS\|GKE\|AKS\|OPENSHIFT\|TANZU\|RANCHER\|EC2\|OTHER` |
+| `--client-request-token` | No | string | None | Idempotency token |
+| `--tags` | No | map | None | Tags |
+
+**Output Schema:**
+```json
+{
+    "cluster": {
+        "name": "string",
+        "arn": "string",
+        "status": "PENDING",
+        "connectorConfig": {
+            "activationId": "string",
+            "activationCode": "string",
+            "activationExpiry": "timestamp",
+            "provider": "string",
+            "roleArn": "string"
+        },
+        "tags": {"key": "value"}
+    }
+}
+```
+
+---
+
+### 1.10 `deregister-cluster`
+
+Deregisters a connected cluster from Amazon EKS.
+
+**Synopsis:**
+```bash
+aws eks deregister-cluster \
+    --name <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--name` | **Yes** | string | -- | Connected cluster name |
+
+**Output Schema:**
+```json
+{
+    "cluster": {
+        "name": "string",
+        "arn": "string",
+        "status": "DELETING",
+        "connectorConfig": {
+            "provider": "string",
+            "roleArn": "string"
+        }
+    }
+}
+```
+
+---
+
+### 1.11 `get-token`
+
+Gets a token for authentication with an Amazon EKS cluster. Used by kubectl and other Kubernetes clients.
+
+**Synopsis:**
+```bash
+aws eks get-token \
+    --cluster-name <value> \
+    [--role-arn <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--cluster-name` | **Yes** | string | -- | Cluster name |
+| `--role-arn` | No | string | None | IAM role ARN to assume for authentication |
+
+**Output Schema:**
+```json
+{
+    "kind": "ExecCredential",
+    "apiVersion": "client.authentication.k8s.io/v1beta1",
+    "spec": {},
+    "status": {
+        "expirationTimestamp": "timestamp",
+        "token": "string"
+    }
+}
+```

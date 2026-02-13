@@ -1,19 +1,141 @@
 # Capabilities
 
-### 9.1 `describe-cluster-versions`
+### 9.1 `create-capability`
 
-Lists available Kubernetes versions for EKS clusters.
+Creates a capability for the specified EKS cluster.
 
 **Synopsis:**
 ```bash
-aws eks describe-cluster-versions \
-    [--cluster-type <value>] \
-    [--default-only | --no-default-only] \
-    [--include-all | --no-include-all] \
-    [--cluster-versions-only <value>] \
-    [--status <value>] \
+aws eks create-capability \
+    --cluster-name <value> \
+    --capability-type <value> \
+    [--configuration <value>] \
+    [--tags <value>] \
+    [--client-request-token <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--cluster-name` | **Yes** | string | -- | Cluster name |
+| `--capability-type` | **Yes** | string | -- | Capability type |
+| `--configuration` | No | string | None | Configuration for the capability (JSON) |
+| `--tags` | No | map | None | Tags for the capability |
+| `--client-request-token` | No | string | None | Idempotency token |
+
+**Output Schema:**
+```json
+{
+    "capability": {
+        "capabilityId": "string",
+        "clusterName": "string",
+        "capabilityType": "string",
+        "configuration": "string",
+        "status": "CREATING|ACTIVE|DELETING|CREATE_FAILED|DELETE_FAILED",
+        "createdAt": "timestamp",
+        "modifiedAt": "timestamp",
+        "tags": {"key": "value"}
+    }
+}
+```
+
+---
+
+### 9.2 `delete-capability`
+
+Deletes a capability from the specified cluster.
+
+**Synopsis:**
+```bash
+aws eks delete-capability \
+    --cluster-name <value> \
+    --capability-id <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--cluster-name` | **Yes** | string | -- | Cluster name |
+| `--capability-id` | **Yes** | string | -- | Capability ID |
+
+**Output Schema:**
+```json
+{
+    "capability": {
+        "capabilityId": "string",
+        "clusterName": "string",
+        "capabilityType": "string",
+        "status": "DELETING",
+        "createdAt": "timestamp",
+        "modifiedAt": "timestamp"
+    }
+}
+```
+
+---
+
+### 9.3 `describe-capability`
+
+Describes a capability.
+
+**Synopsis:**
+```bash
+aws eks describe-capability \
+    --cluster-name <value> \
+    --capability-id <value> \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--cluster-name` | **Yes** | string | -- | Cluster name |
+| `--capability-id` | **Yes** | string | -- | Capability ID |
+
+**Output Schema:**
+```json
+{
+    "capability": {
+        "capabilityId": "string",
+        "clusterName": "string",
+        "capabilityType": "string",
+        "configuration": "string",
+        "status": "CREATING|ACTIVE|DELETING|CREATE_FAILED|DELETE_FAILED",
+        "createdAt": "timestamp",
+        "modifiedAt": "timestamp",
+        "tags": {"key": "value"},
+        "health": {
+            "issues": [
+                {
+                    "code": "string",
+                    "message": "string",
+                    "resourceIds": ["string"]
+                }
+            ]
+        }
+    }
+}
+```
+
+---
+
+### 9.4 `list-capabilities`
+
+Lists capabilities for the specified cluster. **Paginated operation.**
+
+**Synopsis:**
+```bash
+aws eks list-capabilities \
+    --cluster-name <value> \
     [--starting-token <value>] \
-    [--page-size <value>] \
     [--max-items <value>] \
     [--cli-input-json | --cli-input-yaml] \
     [--generate-cli-skeleton <value>]
@@ -23,31 +145,63 @@ aws eks describe-cluster-versions \
 
 | Parameter | Required | Type | Default | Description |
 |-----------|----------|------|---------|-------------|
-| `--cluster-type` | No | string | None | Filter by cluster type |
-| `--default-only` | No | boolean | false | Only return default version |
-| `--include-all` | No | boolean | false | Include all versions including deprecated |
-| `--cluster-versions-only` | No | list(string) | None | Specific versions to describe |
-| `--status` | No | string | None | Filter by status |
+| `--cluster-name` | **Yes** | string | -- | Cluster name |
 | `--starting-token` | No | string | None | Pagination token |
-| `--page-size` | No | integer | None | Items per page |
 | `--max-items` | No | integer | None | Max items to return |
 
 **Output Schema:**
 ```json
 {
-    "clusterVersions": [
+    "capabilities": [
         {
-            "clusterVersion": "string",
-            "clusterType": "string",
-            "defaultPlatformVersion": "string",
-            "defaultVersion": true|false,
-            "releaseDate": "timestamp",
-            "endOfStandardSupportDate": "timestamp",
-            "endOfExtendedSupportDate": "timestamp",
+            "capabilityId": "string",
+            "clusterName": "string",
+            "capabilityType": "string",
             "status": "string",
-            "kubernetesPatchVersion": "string"
+            "createdAt": "timestamp"
         }
     ],
     "nextToken": "string"
+}
+```
+
+---
+
+### 9.5 `update-capability`
+
+Updates a capability configuration.
+
+**Synopsis:**
+```bash
+aws eks update-capability \
+    --cluster-name <value> \
+    --capability-id <value> \
+    [--configuration <value>] \
+    [--client-request-token <value>] \
+    [--cli-input-json | --cli-input-yaml] \
+    [--generate-cli-skeleton <value>]
+```
+
+**Parameters:**
+
+| Parameter | Required | Type | Default | Description |
+|-----------|----------|------|---------|-------------|
+| `--cluster-name` | **Yes** | string | -- | Cluster name |
+| `--capability-id` | **Yes** | string | -- | Capability ID |
+| `--configuration` | No | string | None | Updated configuration (JSON) |
+| `--client-request-token` | No | string | None | Idempotency token |
+
+**Output Schema:**
+```json
+{
+    "capability": {
+        "capabilityId": "string",
+        "clusterName": "string",
+        "capabilityType": "string",
+        "configuration": "string",
+        "status": "string",
+        "createdAt": "timestamp",
+        "modifiedAt": "timestamp"
+    }
 }
 ```
