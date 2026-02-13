@@ -29,7 +29,7 @@ description: >-
   Transfer Family, DataSync, Snow Family, Storage Gateway, Backup, FSx,
   S3 Control, Network Manager, Migration, Application Discovery, DMS,
   S3 Outposts, Internet Monitor, CloudWatch Network Monitor, Textract,
-  Kendra, Comprehend Medical, HealthLake, Forecast, and Bedrock.
+  Kendra, Comprehend Medical, HealthLake, Forecast, Q Connect, and Bedrock.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -191,6 +191,7 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Bedrock | [`bedrock/overview.md`](references/bedrock/overview.md) | Foundation models, custom models, fine-tuning, guardrails, inference profiles, agents, knowledge bases, prompts, flows, RAG, model invocation |
 | HealthLake | [`healthlake/overview.md`](references/healthlake/overview.md) | FHIR R4 data stores, FHIR import/export jobs, SSE encryption, SMART on FHIR authorization, waiters |
 | Forecast | [`forecast/overview.md`](references/forecast/overview.md) | Time-series forecasting, datasets, AutoPredictors, forecasts, what-if analysis, explainability, monitors, queries |
+| Q Connect | [`qconnect/overview.md`](references/qconnect/overview.md) | AI-powered contact center assistant, knowledge bases, AI agents, guardrails, prompts, sessions, messaging, quick responses, message templates |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
