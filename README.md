@@ -1,6 +1,6 @@
 # AWS CLI Skills for Claude Code
 
-A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 161 AWS services, sourced from official AWS documentation.
+A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 175 AWS services, sourced from official AWS documentation.
 
 ## Covered Services
 
@@ -167,6 +167,20 @@ A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). 
 | Q Connect | `references/qconnect/` | AI-powered contact center assistant, knowledge bases, AI agents, guardrails, prompts, sessions |
 | SageMaker A2I | `references/sagemaker-a2i-runtime/` | Human-in-the-loop review, human loops, flow definitions |
 | Entity Resolution | `references/entityresolution/` | Entity matching workflows, ID mapping, ID namespaces, schema mappings, provider services |
+| AppSync | `references/appsync/` | GraphQL and Events APIs, data sources, resolvers, functions, types, API keys, caching, domain names, merged APIs |
+| Amazon MQ | `references/mq/` | ActiveMQ and RabbitMQ brokers, configurations, users, engine types |
+| Pinpoint | `references/pinpoint/` | Customer engagement campaigns, journeys, segments, messaging channels, templates, endpoints, SMS/voice v2 |
+| Connect | `references/connect/` | Contact center instances, contact flows, contacts, users, queues, routing profiles, evaluation forms, metrics, cases |
+| Chime SDK | `references/chime/` | App instances, meetings, attendees, messaging channels, voice connectors, phone numbers, SIP, voice profiles |
+| WorkMail | `references/workmail/` | Organizations, users, groups, resources, mail domains, access control, impersonation, mobile devices |
+| Application Auto Scaling | `references/application-autoscaling/` | Scalable targets, scaling policies, scheduled actions, predictive scaling |
+| EventBridge Scheduler | `references/scheduler/` | One-time and recurring schedules, schedule groups, universal target invocation |
+| EventBridge Pipes | `references/pipes/` | Point-to-point event pipes, source-target connections, filtering, enrichment |
+| AppConfig | `references/appconfig/` | Feature flags, configuration profiles, deployment strategies, environments, extensions, runtime data |
+| CloudWatch Evidently | `references/evidently/` | Feature flags, A/B testing, projects, features, experiments, launches, segments |
+| CloudWatch RUM | `references/rum/` | Real user monitoring, app monitors, custom metrics, resource policies |
+| Service Catalog AppRegistry | `references/servicecatalog-appregistry/` | Applications, attribute groups, resource associations, configuration |
+| SWF | `references/swf/` | Simple Workflow Service, domains, workflow types, activity types, executions, tasks |
 
 ## Adding the Skill to Your Project
 
@@ -177,7 +191,7 @@ Claude Code loads skills from a `skills/` directory in your project root. Copy t
 cp -r /path/to/awscliskills/skills/aws-cli skills/
 ```
 
-That's it — one directory gives you all 161 services.
+That's it — one directory gives you all 175 services.
 
 ### Alternative: Git subtree (stays synced with updates)
 
@@ -207,7 +221,7 @@ skills/aws-cli/
       ...
     ec2/
     ecr/
-    ... (161 service directories)
+    ... (175 service directories)
 ```
 
 **SKILL.md** contains:

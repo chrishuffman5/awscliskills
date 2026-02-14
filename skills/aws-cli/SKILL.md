@@ -32,7 +32,9 @@ description: >-
   Kendra, Comprehend Medical, HealthLake, Forecast, Q Connect, Bedrock, SageMaker,
   Comprehend, Rekognition, Polly, Transcribe, Translate, Lex v2, Personalize,
   Lookout for Vision, Lookout for Equipment, Lookout for Metrics, SageMaker A2I,
-  and Entity Resolution.
+  Entity Resolution, AppSync, Amazon MQ, Pinpoint, Connect, Chime SDK, WorkMail,
+  Application Auto Scaling, EventBridge Scheduler, EventBridge Pipes, AppConfig,
+  CloudWatch Evidently, CloudWatch RUM, Service Catalog AppRegistry, and SWF.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -208,6 +210,20 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | Lookout for Metrics | [`lookoutmetrics/overview.md`](references/lookoutmetrics/overview.md) | Metric anomaly detection, detectors, metric sets, alerts, anomaly groups |
 | SageMaker A2I | [`sagemaker-a2i-runtime/overview.md`](references/sagemaker-a2i-runtime/overview.md) | Human-in-the-loop review, human loops, flow definitions |
 | Entity Resolution | [`entityresolution/overview.md`](references/entityresolution/overview.md) | Entity matching workflows, ID mapping, ID namespaces, schema mappings, provider services |
+| AppSync | [`appsync/overview.md`](references/appsync/overview.md) | GraphQL and Events APIs, data sources, resolvers, functions, types, API keys, caching, domain names, merged APIs |
+| Amazon MQ | [`mq/overview.md`](references/mq/overview.md) | ActiveMQ and RabbitMQ brokers, configurations, users, engine types |
+| Pinpoint | [`pinpoint/overview.md`](references/pinpoint/overview.md) | Customer engagement campaigns, journeys, segments, messaging channels, templates, endpoints, SMS/voice v2 phone numbers, pools, registrations |
+| Connect | [`connect/overview.md`](references/connect/overview.md) | Contact center instances, contact flows, contacts, users, queues, routing profiles, evaluation forms, metrics, cases, participant connections |
+| Chime SDK | [`chime/overview.md`](references/chime/overview.md) | App instances, meetings, attendees, messaging channels, voice connectors, phone numbers, SIP, proxy sessions, voice profiles |
+| WorkMail | [`workmail/overview.md`](references/workmail/overview.md) | Organizations, users, groups, resources, mail domains, access control, impersonation, mobile devices, message flow |
+| Application Auto Scaling | [`application-autoscaling/overview.md`](references/application-autoscaling/overview.md) | Scalable targets, scaling policies, scheduled actions, predictive scaling |
+| EventBridge Scheduler | [`scheduler/overview.md`](references/scheduler/overview.md) | One-time and recurring schedules, schedule groups, universal target invocation |
+| EventBridge Pipes | [`pipes/overview.md`](references/pipes/overview.md) | Point-to-point event pipes, source-target connections, filtering, enrichment |
+| AppConfig | [`appconfig/overview.md`](references/appconfig/overview.md) | Feature flags, configuration profiles, deployment strategies, environments, extensions, runtime data retrieval |
+| CloudWatch Evidently | [`evidently/overview.md`](references/evidently/overview.md) | Feature flags, A/B testing, projects, features, experiments, launches, segments |
+| CloudWatch RUM | [`rum/overview.md`](references/rum/overview.md) | Real user monitoring, app monitors, custom metrics, resource policies |
+| Service Catalog AppRegistry | [`servicecatalog-appregistry/overview.md`](references/servicecatalog-appregistry/overview.md) | Applications, attribute groups, resource associations, configuration |
+| SWF | [`swf/overview.md`](references/swf/overview.md) | Simple Workflow Service, domains, workflow types, activity types, executions, decision/activity tasks |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 
