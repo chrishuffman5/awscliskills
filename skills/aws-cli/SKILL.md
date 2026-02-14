@@ -34,7 +34,10 @@ description: >-
   Lookout for Vision, Lookout for Equipment, Lookout for Metrics, SageMaker A2I,
   Entity Resolution, AppSync, Amazon MQ, Pinpoint, Connect, Chime SDK, WorkMail,
   Application Auto Scaling, EventBridge Scheduler, EventBridge Pipes, AppConfig,
-  CloudWatch Evidently, CloudWatch RUM, Service Catalog AppRegistry, and SWF.
+  CloudWatch Evidently, CloudWatch RUM, Service Catalog AppRegistry, SWF,
+  IoT Core, IoT Events, IoT Device Advisor, IoT SiteWise, IoT TwinMaker,
+  IoT FleetWise, Greengrass v2, IoT Wireless, MediaConvert, MediaLive,
+  Elastic Transcoder, MediaPackage, MediaStore, MediaConnect, and IVS.
   Use this skill for any task involving AWS resource creation, management,
   querying, or teardown via the CLI.
 ---
@@ -224,6 +227,21 @@ Unified AWS CLI v2 reference skill. Contains general conventions shared across a
 | CloudWatch RUM | [`rum/overview.md`](references/rum/overview.md) | Real user monitoring, app monitors, custom metrics, resource policies |
 | Service Catalog AppRegistry | [`servicecatalog-appregistry/overview.md`](references/servicecatalog-appregistry/overview.md) | Applications, attribute groups, resource associations, configuration |
 | SWF | [`swf/overview.md`](references/swf/overview.md) | Simple Workflow Service, domains, workflow types, activity types, executions, decision/activity tasks |
+| IoT Core | [`iot/overview.md`](references/iot/overview.md) | Things, certificates, policies, rules, shadows, jobs, fleet indexing, security auditing, OTA updates, device defender, billing groups |
+| IoT Events | [`iotevents/overview.md`](references/iotevents/overview.md) | Detector models, inputs, alarm models, runtime detector and alarm operations, logging |
+| IoT Device Advisor | [`iotdeviceadvisor/overview.md`](references/iotdeviceadvisor/overview.md) | Suite definitions, suite runs, test reports, endpoint management |
+| IoT SiteWise | [`iotsitewise/overview.md`](references/iotsitewise/overview.md) | Asset models, assets, portals, dashboards, gateways, projects, time series data, bulk import, datasets |
+| IoT TwinMaker | [`iottwinmaker/overview.md`](references/iottwinmaker/overview.md) | Workspaces, entities, component types, scenes, sync jobs, metadata transfer, property values, pricing |
+| IoT FleetWise | [`iotfleetwise/overview.md`](references/iotfleetwise/overview.md) | Signal catalogs, model manifests, vehicles, campaigns, decoder manifests, fleets, state templates |
+| Greengrass v2 | [`greengrassv2/overview.md`](references/greengrassv2/overview.md) | Core devices, components, deployments, client device associations, service role management |
+| IoT Wireless | [`iotwireless/overview.md`](references/iotwireless/overview.md) | LoRaWAN/Sidewalk devices, wireless gateways, destinations, multicast groups, FUOTA tasks, network analyzer |
+| MediaConvert | [`mediaconvert/overview.md`](references/mediaconvert/overview.md) | Transcoding jobs, job templates, output presets, queues, policies, resource sharing |
+| MediaLive | [`medialive/overview.md`](references/medialive/overview.md) | Channels, inputs, input security groups, multiplexes, clusters, networks, schedules, reservations, signal maps |
+| Elastic Transcoder | [`elastictranscoder/overview.md`](references/elastictranscoder/overview.md) | Pipelines, presets, transcoding jobs (legacy service) |
+| MediaPackage | [`mediapackage/overview.md`](references/mediapackage/overview.md) | Channel groups, channels, origin endpoints, harvest jobs, VOD packaging groups, configurations, assets |
+| MediaStore | [`mediastore/overview.md`](references/mediastore/overview.md) | Containers, container policies, CORS, lifecycle, metrics, object operations |
+| MediaConnect | [`mediaconnect/overview.md`](references/mediaconnect/overview.md) | Flows, sources, outputs, entitlements, media streams, VPC interfaces, bridges, gateways, routers |
+| IVS | [`ivs/overview.md`](references/ivs/overview.md) | Channels, streams, stream keys, stages, compositions, participants, chat rooms, recording, playback |
 
 **REQUIRED:** Read the overview file for the AWS service you are working with.
 

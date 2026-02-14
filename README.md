@@ -1,6 +1,6 @@
 # AWS CLI Skills for Claude Code
 
-A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 175 AWS services, sourced from official AWS documentation.
+A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). Provides comprehensive command references — flags, types, defaults, and JSON output schemas — for 190 AWS services, sourced from official AWS documentation.
 
 ## Covered Services
 
@@ -181,6 +181,21 @@ A unified AWS CLI v2 reference skill for [Claude Code](https://claude.ai/code). 
 | CloudWatch RUM | `references/rum/` | Real user monitoring, app monitors, custom metrics, resource policies |
 | Service Catalog AppRegistry | `references/servicecatalog-appregistry/` | Applications, attribute groups, resource associations, configuration |
 | SWF | `references/swf/` | Simple Workflow Service, domains, workflow types, activity types, executions, tasks |
+| IoT Core | `references/iot/` | Things, certificates, policies, rules, shadows, jobs, fleet indexing, security auditing, OTA updates |
+| IoT Events | `references/iotevents/` | Detector models, inputs, alarm models, runtime detector and alarm operations |
+| IoT Device Advisor | `references/iotdeviceadvisor/` | Suite definitions, suite runs, test reports, endpoint management |
+| IoT SiteWise | `references/iotsitewise/` | Asset models, assets, portals, dashboards, gateways, projects, time series data |
+| IoT TwinMaker | `references/iottwinmaker/` | Workspaces, entities, component types, scenes, sync jobs, metadata transfer |
+| IoT FleetWise | `references/iotfleetwise/` | Signal catalogs, model manifests, vehicles, campaigns, decoder manifests, fleets |
+| Greengrass v2 | `references/greengrassv2/` | Core devices, components, deployments, client device associations |
+| IoT Wireless | `references/iotwireless/` | LoRaWAN/Sidewalk devices, wireless gateways, destinations, multicast, FUOTA tasks |
+| MediaConvert | `references/mediaconvert/` | Transcoding jobs, job templates, output presets, queues, policies |
+| MediaLive | `references/medialive/` | Channels, inputs, multiplexes, clusters, networks, schedules, reservations, signal maps |
+| Elastic Transcoder | `references/elastictranscoder/` | Pipelines, presets, transcoding jobs (legacy service) |
+| MediaPackage | `references/mediapackage/` | Channel groups, channels, origin endpoints, harvest jobs, VOD packaging |
+| MediaStore | `references/mediastore/` | Containers, policies, CORS, lifecycle, object operations |
+| MediaConnect | `references/mediaconnect/` | Flows, sources, outputs, entitlements, media streams, bridges, gateways |
+| IVS | `references/ivs/` | Channels, streams, stages, compositions, participants, chat rooms, recording |
 
 ## Adding the Skill to Your Project
 
@@ -191,7 +206,7 @@ Claude Code loads skills from a `skills/` directory in your project root. Copy t
 cp -r /path/to/awscliskills/skills/aws-cli skills/
 ```
 
-That's it — one directory gives you all 175 services.
+That's it — one directory gives you all 190 services.
 
 ### Alternative: Git subtree (stays synced with updates)
 
@@ -221,7 +236,7 @@ skills/aws-cli/
       ...
     ec2/
     ecr/
-    ... (175 service directories)
+    ... (190 service directories)
 ```
 
 **SKILL.md** contains:
