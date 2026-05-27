@@ -1,0 +1,23 @@
+{
+  "name": "chrishuffman5",
+  "owner": {
+    "name": "Christopher Huffman",
+    "email": "50709169+chrishuffman5@users.noreply.github.com"
+  },
+  "plugins": [
+    {
+      "name": "aws-cli",
+      "description": "AWS CLI v2 command reference for 190 AWS services — per-service sub-skills with complete flags, types, defaults, and JSON output schemas, behind a lean router that loads only the service you need.",
+      "version": "1.0.0",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/chrishuffman5/awscliskills.git"
+      },
+      "author": {
+        "name": "Christopher Huffman",
+        "email": "50709169+chrishuffman5@users.noreply.github.com"
+      },
+      "homepage": "https://github.com/chrishuffman5/awscliskills"
+    }
+  ]
+}

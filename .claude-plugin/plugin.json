@@ -1,0 +1,22 @@
+{
+  "name": "aws-cli",
+  "description": "AWS CLI v2 command reference for 190 AWS services — per-service sub-skills with complete flags, types, defaults, and JSON output schemas, behind a lean router that loads only the service you need.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Christopher Huffman",
+    "email": "50709169+chrishuffman5@users.noreply.github.com"
+  },
+  "homepage": "https://github.com/chrishuffman5/awscliskills",
+  "repository": "https://github.com/chrishuffman5/awscliskills",
+  "license": "MIT",
+  "keywords": [
+    "aws",
+    "aws-cli",
+    "cloud",
+    "devops",
+    "ec2",
+    "s3",
+    "iam",
+    "infrastructure"
+  ]
+}
