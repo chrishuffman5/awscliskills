@@ -144,9 +144,18 @@ When the two numbers diverge, identify the cause instead of assuming one is "wro
 1. Run **Method B** (CloudWatch) for the fast, billing-aligned number across all buckets —
    summing **all** storage classes, in each bucket's region.
 2. Run **Method A** (`s3 ls --summarize`, or `sum(Contents[].Size)` **re-summed per page** —
-   see A2) for the live, current logical size. Parallelize across buckets; it is the slow part.
-3. **Return both columns** (Logical size | Billable size) plus object count, and add a one-line
+   see A2) for the live, current logical size. **You MUST run the per-bucket calls in parallel**
+   (background jobs / `xargs -P` / `&` + `wait`) — this enumeration is the slow part and the only
+   step that grows with bucket/object count. A serial loop over N buckets is ~1.5×+ slower for
+   zero accuracy benefit.
+3. **Total in exact bytes, programmatically — never hand-sum.** Keep each bucket's size in raw
+   **bytes**, and compute the grand total by summing that column in code (`awk`/`jq`/Python), not
+   by adding the rounded MB/GiB values you printed. Hand-totaling displayed values is the most
+   common late-stage error: per-bucket data is right but the total silently drifts 1–5%. Convert
+   to human units only at the very end, for display.
+4. **Return both columns** (Logical size | Billable size) plus object count, and add a one-line
    note for any bucket where they diverge (versioning / multipart / lag).
-4. **Sanity-check** before presenting: does the largest bucket's size match expectations
-   (e.g. a bucket named `*backup*` shouldn't be a few KB)? An implausible total usually means
-   a parsing bug like the `$1` trap above.
+5. **Sanity-check before presenting — two checks, not one:**
+   (a) does the printed grand total equal the sum of the column you displayed? (catches hand-sum
+   drift); and (b) does the largest bucket match expectations (e.g. a `*backup*` bucket shouldn't
+   be a few KB)? An implausible value usually means a parsing bug like the `$1` trap above.
