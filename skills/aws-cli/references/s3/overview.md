@@ -43,8 +43,10 @@ aws s3api put-bucket-lifecycle-configuration --bucket my-bucket --lifecycle-conf
 ### Measure bucket storage size
 **There are two different "sizes" — return both.** See [`storage-sizing.md`](storage-sizing.md) for the full method, downsides, and reconciliation.
 ```bash
-# Logical size (current objects, real-time). NEVER pipe `Contents[*].Size --output text` into `awk '{sum+=$1}'` — that sums only the FIRST object. Let JMESPath sum:
-aws s3api list-objects-v2 --bucket my-bucket --query 'sum(Contents[].Size)' --output text   # or: aws s3 ls s3://my-bucket --recursive --summarize --human-readable
+# Logical size (current objects, real-time). Simplest robust path (sums all pages internally):
+aws s3 ls s3://my-bucket --recursive --summarize --human-readable
+# Pitfalls: `Contents[*].Size --output text | awk '{sum+=$1}'` sums only the FIRST object; AND
+# `sum(Contents[].Size)` emits one partial sum PER 1000-object page (re-sum with `| awk '{s+=$1}'`).
 
 # Billable size (fast, O(1)/bucket, ~24-48h lag) — sum ALL storage classes, in the bucket's region:
 aws cloudwatch get-metric-data --region <bucket-region> --metric-data-queries file://queries.json \

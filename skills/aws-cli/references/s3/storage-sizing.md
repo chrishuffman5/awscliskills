@@ -26,13 +26,24 @@ aws s3 ls s3://BUCKET --recursive --summarize --human-readable
 # tail shows:  Total Objects: N   Total Size: X
 ```
 
-### A2. Scriptable exact bytes — let JMESPath do the sum (preferred for automation)
+### A2. Scriptable exact bytes
 ```bash
-aws s3api list-objects-v2 --bucket BUCKET --query 'sum(Contents[].Size)' --output text
-# empty bucket prints "None" -> treat as 0
+# ROBUST — s3 ls sums correctly across ALL pages internally:
+aws s3 ls s3://BUCKET --recursive --summarize | awk '/Total Size:/{print $3}'
+
+# OR list-objects-v2 + re-sum. The CLI applies --query PER 1,000-object PAGE, so you MUST
+# add the per-page results, NOT read the first line:
+aws s3api list-objects-v2 --bucket BUCKET --query 'sum(Contents[].Size)' --output text \
+  | awk '{s+=$1} END{print s+0}'      # empty bucket -> "None" -> 0
 ```
-`list-objects-v2` auto-paginates in CLI v2, and `sum()` runs server-side on the assembled
-result, so this is correct for buckets of any object count.
+> **⛔ Pagination gotcha (verified) — `sum(Contents[].Size)` does NOT return one total for
+> buckets > 1,000 objects.** CLI v2 applies `--query` to each 1,000-object page *separately*,
+> so a 2,699-object bucket prints THREE numbers on three lines (e.g.
+> `14497433533` / `505159156` / `356800680`, which sum to the true `15359393369`). Reading it
+> as a single value silently truncates to the first page (~94% loss possible). **Fix:** re-sum
+> the lines with `awk '{s+=$1}'` (this works *because* each line now holds ONE field — the
+> mirror image of the `Contents[*].Size` trap below), or just use `s3 ls --summarize`, which
+> aggregates pages internally.
 
 ### ⛔ NEVER do this — the `$1` trap (silently wrong)
 ```bash
@@ -122,7 +133,7 @@ When the two numbers diverge, identify the cause instead of assuming one is "wro
 | Symptom | Likely cause | Confirm with |
 |---------|--------------|--------------|
 | B ≫ A, bucket is versioned | Noncurrent versions counted by B, not A | `aws s3api get-bucket-versioning --bucket B` |
-| B ≫ A, bucket **not** versioned | Orphaned incomplete multipart uploads | `aws s3api list-multipart-uploads --bucket B --query 'length(Uploads)'` |
+| B ≫ A, bucket **not** versioned | Orphaned incomplete multipart uploads | `aws s3api list-multipart-uploads --bucket B --query 'length(Uploads)'` (⚠ `Uploads[]` has **no `Size`** field — `sum(Uploads[].Size)`=0 always; for bytes, `list-parts` per upload and sum `Parts[].Size`, or just trust CloudWatch which already includes them) |
 | B ≪ A (B smaller) | CloudWatch lag — data added after last daily snapshot | inspect metric `Timestamps` |
 | "Empty" in B but A > 0 | New data since snapshot, or first key is a 0-byte folder marker | `s3 ls` the bucket |
 
@@ -132,8 +143,8 @@ When the two numbers diverge, identify the cause instead of assuming one is "wro
 
 1. Run **Method B** (CloudWatch) for the fast, billing-aligned number across all buckets —
    summing **all** storage classes, in each bucket's region.
-2. Run **Method A** (`s3 ls --summarize` or `sum(Contents[].Size)`) for the live, current
-   logical size. Parallelize across buckets; it is the slow part.
+2. Run **Method A** (`s3 ls --summarize`, or `sum(Contents[].Size)` **re-summed per page** —
+   see A2) for the live, current logical size. Parallelize across buckets; it is the slow part.
 3. **Return both columns** (Logical size | Billable size) plus object count, and add a one-line
    note for any bucket where they diverge (versioning / multipart / lag).
 4. **Sanity-check** before presenting: does the largest bucket's size match expectations
