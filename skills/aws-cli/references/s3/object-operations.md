@@ -439,6 +439,12 @@ aws s3api head-object \
 
 Lists objects in a bucket. Returns up to 1000 objects per request. **Paginated operation.**
 
+> **Summing object sizes (bucket size):** use `--query 'sum(Contents[].Size)' --output text`
+> (empty bucket → `None` = 0). **Do NOT** use `--query 'Contents[*].Size' --output text | awk '{sum+=$1}'`
+> — text output puts the whole list on one tab-delimited line, so `$1` captures only the FIRST
+> object and silently undercounts every multi-object bucket. This counts current objects only
+> (no versions / delete markers / multipart). See [`storage-sizing.md`](storage-sizing.md).
+
 **Synopsis:**
 ```bash
 aws s3api list-objects-v2 \

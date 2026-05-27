@@ -172,6 +172,11 @@ aws s3 ls [<S3Uri>]
 
 **Output:** Text listing to stdout. No JSON output.
 
+> **Sizing a bucket:** `aws s3 ls s3://BUCKET --recursive --summarize --human-readable` prints
+> `Total Objects` and `Total Size` for **current objects** (no versions / delete markers /
+> incomplete multipart parts, which still bill). For billable storage use CloudWatch
+> `BucketSizeBytes`. Return both — see [`storage-sizing.md`](storage-sizing.md).
+
 ---
 
 ### 1.6 `mb`
