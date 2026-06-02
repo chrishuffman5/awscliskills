@@ -84,7 +84,8 @@
 | `get-automated-reasoning-policy-build-workflow-status` | Automated Reasoning | Get build workflow status |
 | `put-model-invocation-logging-configuration` | Logging | Configure model invocation logging |
 | `get-model-invocation-logging-configuration` | Logging | Get model invocation logging config |
-| `put-use-case-for-model-access` | Access | Set use case for model access |
+| `put-use-case-for-model-access` | Access | Submit the FTU form for Anthropic model access |
+| `get-use-case-for-model-access` | Access | Retrieve the submitted FTU form for model access |
 | `tag-resource` | Tags | Add tags to a Bedrock resource |
 | `untag-resource` | Tags | Remove tags from a Bedrock resource |
 | `list-tags-for-resource` | Tags | List tags for a Bedrock resource |
