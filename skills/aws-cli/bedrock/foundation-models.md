@@ -12,6 +12,32 @@ How to get a foundation model ready to invoke:
 - **Readiness check:** `get-foundation-model-availability` returns `agreementAvailability.status` (`AVAILABLE` | `PENDING` | `IN_PROGRESS` | `NOT_AVAILABLE`), `authorizationStatus` (`AUTHORIZED` | `NOT_AUTHORIZED`), and `entitlementAvailability` (`AVAILABLE` | `NOT_AVAILABLE`).
 - **Prerequisites:** The caller needs `aws-marketplace:Subscribe`, `aws-marketplace:Unsubscribe`, and `aws-marketplace:ViewSubscriptions`, plus a valid payment method on the account. The first invocation auto-initiates the subscription; allow up to ~15 minutes for propagation, during which `AccessDeniedException` can appear transiently.
 
+### Example: model access with an SSO profile
+
+When you authenticate through IAM Identity Center (AWS SSO), run the model-access commands against the SSO-enabled profile. The permission set behind that profile must grant the Bedrock and Marketplace actions below — model access applies to the account the profile assumes a role in.
+
+```bash
+# 1. Log in (caches an SSO access token; see ../sso/login-logout.md)
+aws sso login --sso-session my-sso
+
+# 2. Confirm which account/role the profile resolves to
+aws sts get-caller-identity --profile bedrock-admin
+
+# 3. Submit the Anthropic FTU form for that account
+aws bedrock put-use-case-for-model-access \
+    --form-data fileb://anthropic-use-case-form.json \
+    --profile bedrock-admin \
+    --region us-east-1
+
+# 4. Confirm readiness for a specific model
+aws bedrock get-foundation-model-availability \
+    --model-id anthropic.claude-3-5-sonnet-20241022-v2:0 \
+    --profile bedrock-admin \
+    --region us-east-1
+```
+
+The `[profile bedrock-admin]` block references an `[sso-session my-sso]` (see [`../sso/configure-sso.md`](../sso/configure-sso.md)). The permission set must allow `bedrock:PutUseCaseForModelAccess`, `bedrock:GetUseCaseForModelAccess`, `bedrock:GetFoundationModelAvailability`, `bedrock:ListFoundationModelAgreementOffers`, `bedrock:CreateFoundationModelAgreement`, plus the `aws-marketplace:*` actions listed above. A short-lived SSO token can expire mid-workflow — if a call returns an expired-token error, re-run `aws sso login` (see [`../sso/login-logout.md`](../sso/login-logout.md)).
+
 ---
 
 ### `list-foundation-models`
