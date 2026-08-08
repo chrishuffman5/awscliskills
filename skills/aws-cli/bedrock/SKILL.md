@@ -106,11 +106,13 @@ aws bedrock-agent-runtime start-flow-execution \
 
 ## Command Reference
 
+> **Note:** The model-access commands `list-foundation-model-agreement-offers`, `create-foundation-model-agreement`, `delete-foundation-model-agreement`, `get-foundation-model-availability`, `put-use-case-for-model-access`, and `get-use-case-for-model-access` were made public in **AWS CLI v2.27.42** (released 2025-06-24); they were previously console-only. Requires AWS CLI ≥ 2.27.42 — older versions return an unknown-command error. See [`foundation-models.md`](foundation-models.md) for the **Model Access Workflow** and full command entries.
+
 See [`index.md`](index.md) for the quick reference table and global options.
 
 | Group | File | Commands |
 |-------|------|----------|
-| Foundation Models | [`foundation-models.md`](foundation-models.md) | list-foundation-models, get-foundation-model, list-foundation-model-agreement-offers, create-foundation-model-agreement, delete-foundation-model-agreement, get-foundation-model-availability |
+| Foundation Models | [`foundation-models.md`](foundation-models.md) | list-foundation-models, get-foundation-model, list-foundation-model-agreement-offers, create-foundation-model-agreement, delete-foundation-model-agreement, get-foundation-model-availability, put-use-case-for-model-access, get-use-case-for-model-access |
 | Custom Models | [`custom-models.md`](custom-models.md) | create-model-customization-job, get-model-customization-job, list-model-customization-jobs, stop-model-customization-job, create-custom-model, get-custom-model, list-custom-models, delete-custom-model, create-custom-model-deployment, get-custom-model-deployment, list-custom-model-deployments, delete-custom-model-deployment |
 | Model Import & Copy | [`model-import-copy.md`](model-import-copy.md) | create-model-import-job, get-model-import-job, list-model-import-jobs, create-model-copy-job, get-model-copy-job, list-model-copy-jobs, get-imported-model, list-imported-models, delete-imported-model |
 | Provisioned Throughput | [`provisioned-throughput.md`](provisioned-throughput.md) | create-provisioned-model-throughput, get-provisioned-model-throughput, list-provisioned-model-throughputs, update-provisioned-model-throughput, delete-provisioned-model-throughput |
